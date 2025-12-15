@@ -1,3 +1,3 @@
 import { createCatppuccinPlugin } from '@catppuccin/daisyui';
 
-export default createCatppuccinPlugin('frappe');
+export default createCatppuccinPlugin('frappe', {}, { prefersdark: true });

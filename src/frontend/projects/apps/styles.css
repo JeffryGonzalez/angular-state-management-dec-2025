@@ -9,7 +9,11 @@
 @plugin "../common/ui/themes/mocha.ts";
 
 @plugin "daisyui" {
-  themes: false;
+  themes:
+    latte --color-scheme light,
+    frappe --color-scheme dark,
+    mocha --color-scheme dark,
+    macchiato --color-scheme dark;
 }
 
 @layer utilities {

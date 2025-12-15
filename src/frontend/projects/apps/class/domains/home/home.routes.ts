@@ -5,6 +5,7 @@ import { ClassesPage } from './pages/classes';
 import { ThisClassPage } from './pages/this-class';
 import { TimerPage } from './pages/timer';
 import { IntroPage } from './pages/intro';
+import { PicsPage } from './pages/pics';
 
 export const homeRoutes: FeatureRoutes = [
   {
@@ -53,6 +54,15 @@ export const homeRoutes: FeatureRoutes = [
         data: {
           title: 'Intros',
           linkText: 'Intros',
+        },
+        children: [],
+      },
+      {
+        path: 'pics',
+        component: PicsPage,
+        data: {
+          title: 'Pics',
+          linkText: 'Pics',
         },
         children: [],
       },

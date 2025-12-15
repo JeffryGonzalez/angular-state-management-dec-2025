@@ -1,3 +1,9 @@
 import { createCatppuccinPlugin } from '@catppuccin/daisyui';
 
-export default createCatppuccinPlugin('latte');
+export default createCatppuccinPlugin(
+  'latte',
+  {},
+  {
+    prefersdark: false,
+  },
+);
