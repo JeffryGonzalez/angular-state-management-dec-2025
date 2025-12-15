@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@plugin "../common/ui/themes/frappe.ts";
+@plugin "../common/ui/themes/latte.ts";
+@plugin "../common/ui/themes/macchioto.ts";
+@plugin "../common/ui/themes/mocha.ts";
+
+@plugin "daisyui" {
+  themes: false;
+}
+
+@layer utilities {
+  input.app-show-required {
+    @apply border-r-4 border-r-green-500 border-0;
+  }
+}

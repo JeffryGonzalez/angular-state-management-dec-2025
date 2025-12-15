@@ -1,0 +1,68 @@
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve -o",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "start:prod": "ng serve --watch --configuration production --port 4201",
+    "test:system": "playwright test --ui",
+    "test:unit": "ng test",
+    "lint": "ng lint"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular-architects/ngrx-toolkit": "^19.1.0",
+    "@angular/animations": "^21.0.5",
+    "@angular/common": "^21.0.5",
+    "@angular/compiler": "^21.0.5",
+    "@angular/core": "^21.0.5",
+    "@angular/forms": "^21.0.5",
+    "@angular/platform-browser": "^21.0.5",
+    "@angular/platform-browser-dynamic": "^21.0.5",
+    "@angular/router": "^21.0.5",
+    "@ngrx/effects": "^20.1.0",
+    "@ngrx/entity": "^20.1.0",
+    "@ngrx/operators": "^20.1.0",
+    "@ngrx/signals": "^20.1.0",
+    "@ngrx/store": "^20.1.0",
+    "@ngrx/store-devtools": "^20.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.0.3",
+    "@angular/cli": "^21.0.3",
+    "@angular/compiler-cli": "^21.0.5",
+    "@playwright/test": "^1.52.0",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/postcss": "^4.0.9",
+    "@tailwindcss/typography": "^0.5.13",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^22.8.7",
+    "angular-eslint": "21.1.0",
+    "autoprefixer": "^10.4.19",
+    "daisyui": "^5.0.0",
+    "eslint": "^9.28.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "msw": "^2.3.1",
+    "playwright-msw": "^3.0.1",
+    "postcss": "^8.5.3",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^4.0.9",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.33.1"
+  },
+  "msw": {
+    "workerDirectory": [
+      "src"
+    ]
+  }
+}

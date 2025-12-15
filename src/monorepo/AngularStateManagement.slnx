@@ -1,0 +1,10 @@
+<Solution>
+    <Folder Name="/Services/">
+        <Project Path="services/Commands/Commands.csproj" />
+        <Project Path="services/HelpDesk.Api/HelpDesk.Api.csproj" />
+        <Project Path="services/ReadModels/ReadModels.csproj" />
+        <Project Path="services\bff\AsmBff\AsmBff.csproj" />
+    </Folder>
+    <Project Path="ServiceDefaults/ServiceDefaults.csproj" />
+    <Project Path="services/hosting/AppHost/AppHost.csproj" />
+</Solution>

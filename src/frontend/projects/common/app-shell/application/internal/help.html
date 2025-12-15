@@ -1,0 +1,20 @@
+<div class="bg-base-100 p-4">
+  <div>
+    <h1>Keyboard Shortcuts</h1>
+    @for (hotkeyGroup of hotkeys; track $index) {
+      <h2 class="mt-4">{{ hotkeyGroup.group }}</h2>
+      <table class="table">
+        <tbody>
+          @for (hotkey of hotkeyGroup.hotkeys; track hotkey) {
+            <tr class="">
+              <td class="">{{ hotkey.description }}</td>
+              <td class="">
+                <kbd [innerHTML]="hotkey.keys | hotkeysShortcut"></kbd>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+</div>

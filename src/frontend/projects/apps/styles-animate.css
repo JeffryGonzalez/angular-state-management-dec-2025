@@ -1,0 +1,15 @@
+@import 'animate.css';
+
+::view-transition-old(page),
+::view-transition-new(page) {
+  animation-duration: 200ms;
+  animation-name: fadeInUp;
+  animation-duration: 700ms;
+
+  /* animation-delay: 500ms; */
+}
+::view-transition-old(page) {
+  animation-name: fadeOutDown;
+  animation-duration: 700ms;
+}
+

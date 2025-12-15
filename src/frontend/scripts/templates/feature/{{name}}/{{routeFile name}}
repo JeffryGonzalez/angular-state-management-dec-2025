@@ -1,0 +1,21 @@
+import { Home } from './{{ name }}';
+import { HomePage } from './pages/home';
+
+import { FeatureRoutes } from '@app-types/routing/feature-routing';
+export const {{name}}Routes: FeatureRoutes = [
+  {
+    path: '',
+    component: Home,
+    children: [
+      {
+        path: '',
+        component: HomePage,
+        data: {
+          title: 'Welcome',
+          linkText: '{{name}}',
+        },
+        children: [],
+      }
+    ],
+  },
+];

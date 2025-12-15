@@ -1,0 +1,26 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.0.0">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>523b5dfc-5e1c-4785-b9c3-188c2efe6f45</UserSecretsId>
+        <AssemblyName>Angular State Management Dashboard</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" Version="13.0.2"/>
+        <PackageReference Include="Aspire.Hosting.Docker" Version="13.0.2-preview.1.25603.5" />
+        <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.0.2"/>
+        <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="13.0.2" />
+        <PackageReference Include="CommunityToolkit.Aspire.Hosting.NodeJS.Extensions" Version="9.9.0" />
+        <PackageReference Include="Scalar.Aspire" Version="0.8.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\bff\AsmBff\AsmBff.csproj" />
+      <ProjectReference Include="..\..\HelpDesk.Api\HelpDesk.Api.csproj" />
+    </ItemGroup>
+
+</Project>

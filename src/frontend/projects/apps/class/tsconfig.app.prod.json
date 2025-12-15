@@ -1,0 +1,16 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../../out-tsc/app",
+    "types": []
+  },
+  "include": ["src/**/*.ts", "../../common/**/*.ts", "../domains/**/*.ts"],
+  "exclude": ["src/**/*.spec.ts", "../../common/**/*.spec.ts"],
+
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "../common/ui/themes/frappe.ts";
+@plugin "../common/ui/themes/latte.ts";
+@plugin "../common/ui/themes/macchioto.ts";
+@plugin "../common/ui/themes/mocha.ts";
+
+@plugin "daisyui" {
+  themes: false;
+}
+
+@layer utilities {
+  .floating-label {
+    @apply relative border-b-2 border-gray-300 focus-within:border-blue-600;
+    @apply transition-colors duration-300;
+    @apply block pb-2 mb-6;
+  }
+  .floating-label span {
+    @apply transform origin-left scale-100 translate-y-3;
+    @apply transition-all duration-300;
+    pointer-events: none;
+  }
+  .floating-label input:focus + span {
+    @apply absolute left-0 top-0 text-gray-500;
+    @apply transform origin-left scale-100 translate-y-3;
+    @apply transition-all duration-300;
+    pointer-events: none;
+  }
+  .floating-label input:not(:placeholder-shown) + span {
+    @apply scale-75 -translate-y-4 text-yellow-600;
+  }
+}
+
+@layer components {
+}
+
+@keyframes rotate-out {
+  to {
+    transform: rotate(90deg);
+  }
+}
+@keyframes rotate-in {
+  from {
+    transform: rotate(-90deg);
+  }
+}
+
+::view-transition-old(page),
+::view-transition-new(page) {
+  animation-duration: 200ms;
+  animation-name: -ua-view-transition-fade-in, fadeInUp;
+  animation-duration: 700ms;
+
+  /* animation-delay: 500ms; */
+}
+::view-transition-old(page) {
+  animation-name: -ua-view-transition-fade-out, fadeOutDown;
+  animation-duration: 700ms;
+}

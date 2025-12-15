@@ -1,0 +1,66 @@
+{
+  "feature-page": {
+    "scope": "typescript",
+    "prefix": "ngp",
+    "body": [
+      "import { Component, ChangeDetectionStrategy } from '@angular/core';",
+      "import { FeaturePage } from '@app-shell/features/feature-page';",
+      "",
+      "@Component({",
+      "  selector: 'app-$1-pages-$2',",
+      "  changeDetection: ChangeDetectionStrategy.OnPush,",
+      "  imports: [FeaturePage],",
+      "  template: `<ui-feature-page sectionName=\"$2\">$0 </ui-feature-page>`,",
+      "  styles: ``,",
+      "})",
+      "export class ${3:${TM_FILENAME_BASE/(?:^|-|_|\\.)(\\w)/${1:/pascalcase}/g}}Page {}",
+      "",
+    ],
+    "description": "Create a Feature Page",
+  },
+  "feature-page-refactor": {
+    "scope": "typescript",
+    "prefix": "ngpr",
+    "body": [
+      "import { Component, ChangeDetectionStrategy } from '@angular/core';",
+      "import { FeaturePage } from '@app-shell/features/feature-page';",
+      "",
+      "@Component({",
+      "  selector: 'app-$1-pages-$2',",
+      "  changeDetection: ChangeDetectionStrategy.OnPush,",
+      "  imports: [FeaturePage],",
+      "  template: `<ui-feature-page sectionName=\"$2\">$CLIPBOARD</ui-feature-page>`,",
+      "  styles: ``,",
+      "})",
+      "export class ${3:${TM_FILENAME_BASE/(?:^|-|_|\\.)(\\w)/${1:/pascalcase}/g}}Page {}",
+      "",
+    ],
+    "description": "Refactor to  Feature Page",
+  },
+
+  "Angular Routes": {
+    "scope": "typescript",
+    "prefix": "ngfr",
+    "body": [
+      "import { TypedRoutes } from '@app-ui/typed-route';",
+      "import { Routes } from '@angular/router';",
+      "export const ${1:ROUTES}:Routes = [",
+      "\t{",
+      "\t\tpath: '',",
+      "\t\tcomponent: ${2},",
+      "\t\tchildren: [] as TypedRoutes,",
+      "\t}",
+      "]",
+    ],
+  },
+
+  "inner-card": {
+    "prefix": "ngsc",
+    "body": [
+      "\t\t  <ui-card-basic title=\"$1\" titleSize=\"md\">",
+      "\t\t\t<p>$0</p>",
+      "\t\t  </ui-card-basic>",
+    ],
+    "description": "Card Snippet for Pages",
+  },
+}

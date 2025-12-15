@@ -1,0 +1,42 @@
+{
+  "compileOnSave": false,
+  "exclude": ["scripts/**/*", "docs"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app-shell/*": ["projects/common/app-shell/*"],
+      "@app-ui/*": ["projects/common/ui/*"],
+      "@app-types/*": ["projects/common/types/*"],
+      "@app-auth/*": ["projects/common/auth/*"],
+      "@app-errors/*": ["projects/common/errors/*"],
+      "@app-state/*": ["projects/common/state/*"]
+    },
+
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve"
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/apps/software-center/tsconfig.app.dev.json"
+    },
+    {
+      "path": "./projects/apps/class/tsconfig.app.dev.json"
+    }
+  ]
+}

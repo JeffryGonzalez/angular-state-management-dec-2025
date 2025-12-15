@@ -1,0 +1,30 @@
+{
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
+  "files.autoSave": "onFocusChange",
+  "auto-rename-tag.activationOnLanguage": [
+    "html",
+    "xml",
+    "typescript",
+    "javascript"
+  ],
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "eslint.codeActionsOnSave.mode": "all",
+  "editor.formatOnSave": true,
+  "workbench.tree.indent": 19,
+  "explorer.compactFolders": false,
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.format": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

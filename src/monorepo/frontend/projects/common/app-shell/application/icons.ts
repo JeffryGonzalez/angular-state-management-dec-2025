@@ -1,0 +1,51 @@
+// https://ng-icons.github.io/ng-icons/#/browse-icons?iconset=solarSun
+
+import {
+  solarBox,
+  solarDocument,
+  solarDoubleAltArrowDown,
+  solarDoubleAltArrowLeft,
+  solarDoubleAltArrowRight,
+  solarDoubleAltArrowUp,
+  solarFolder2,
+  solarGlasses,
+  solarHome2,
+  solarKeyboard,
+  solarLink,
+  solarLockPassword,
+  solarLogin,
+  solarLogout,
+  solarLogout3,
+  solarQuestionCircle,
+  solarSettings,
+  solarUser,
+  solarBlackHole,
+  solarPaletteRound,
+  solarMirrorRight,
+} from '@ng-icons/solar-icons/outline';
+
+export const navigationIcons = {
+  solarMirrorRight,
+  solarPaletteRound,
+  solarBlackHole,
+  solarHome2,
+  solarDocument,
+  solarSettings,
+  solarUser,
+  solarLogin,
+  solarLogout,
+  solarLockPassword,
+  solarLogout3,
+  solarQuestionCircle,
+  solarKeyboard,
+  solarGlasses,
+  solarLink,
+  solarBox,
+  solarFolder2,
+  solarDoubleAltArrowLeft,
+  solarDoubleAltArrowRight,
+  solarDoubleAltArrowDown,
+  solarDoubleAltArrowUp,
+} as const;
+
+export type IconName = keyof typeof navigationIcons;
