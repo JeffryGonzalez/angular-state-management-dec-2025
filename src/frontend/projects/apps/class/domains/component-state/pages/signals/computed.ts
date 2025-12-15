@@ -1,12 +1,12 @@
-import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
-type PayInfo = {
-  hourlyRate: number;
-  hoursWorked: number;
-};
+import { Component, ChangeDetectionStrategy, signal, computed, inject } from '@angular/core';
+import { payStore } from './stores/pay';
+
 @Component({
   selector: 'app-computed-signals',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
+  providers: [payStore], // this means
+  viewProviders: [],
   template: `
     <p>Computed Signals Component For {{ myName() }}</p>
 
@@ -29,6 +29,11 @@ export class ComputedSignals {
   hoursWorked = signal(40);
   hourlyRate = signal(10.5);
 
+  protected store = inject(payStore);
+  // constructor(private store: PayService) {
+  //   // won't work for two reasons.
+  // }
+
   add(hours: number) {
     this.hourlyRate.update((old) => old + hours);
   }
@@ -41,6 +46,8 @@ export class ComputedSignals {
     // this.myName.set(this.myName().toUpperCase());
     this.myName.update((old) => old.toUpperCase());
   }
+
+  // "don't type public, always refactor to it"
 
   totalPay = computed(() => {
     // create variables for all the signals you are going to use in this first. Not required, but a bit "preemptive"
