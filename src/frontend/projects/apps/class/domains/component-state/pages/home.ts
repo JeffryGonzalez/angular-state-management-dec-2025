@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FeaturePage } from '@app-shell/features/feature-page';
 import { MarkdownBlockComponent } from '@app-ui/markdown/block';
 import { MarkdownComponent } from 'ngx-markdown';
+import { payStore } from './signals/stores/pay';
 
 @Component({
   selector: 'app-component-state-pages-home',
@@ -14,4 +15,6 @@ import { MarkdownComponent } from 'ngx-markdown';
   `,
   styles: ``,
 })
-export class HomePage {}
+export class HomePage {
+  store = inject(payStore);
+}

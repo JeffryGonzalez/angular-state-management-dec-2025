@@ -142,7 +142,7 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/apps/class/src/main.ts",
-            "tsConfig": "projects/apps/class/tsconfig.app.dev.json",
+            "tsConfig": "projects/apps/class/tsconfig.app.prod.json",
             "assets": [
               {
                 "glob": "**/*",
@@ -194,6 +194,7 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
+              "tsConfig": "projects/apps/class/tsconfig.app.dev.json",
               "assets": [
                 "projects/apps/class/src/mockServiceWorker.js",
                 {

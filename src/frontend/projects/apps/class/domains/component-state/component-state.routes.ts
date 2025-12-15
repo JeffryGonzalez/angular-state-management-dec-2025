@@ -2,16 +2,17 @@ import { Home } from './component-state';
 import { HomePage } from './pages/home';
 
 import { FeatureRoutes } from '@app-types/routing/feature-routing';
-import { SignalsHomePage } from './pages/signals/home';
 import { Basic } from './pages/signals/basic';
 import { ComputedSignals } from './pages/signals/computed';
-import { linkedSignal } from '@angular/core';
+import { SignalsHomePage } from './pages/signals/home';
 import { Linked } from './pages/signals/linked';
+import { payStore } from './pages/signals/stores/pay';
 
 export const componentStateRoutes: FeatureRoutes = [
   {
     path: '',
     component: Home,
+    providers: [payStore], // late created, never destroyed
     children: [
       {
         path: '',

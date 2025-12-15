@@ -4,8 +4,7 @@
   "scripts": {
     "ng": "ng",
     "dev:class": "ng serve class",
-    "dev:sc": "ng serve software-center --allowed-hosts true",
-    "build:sc": "ng build software-center --configuration production",
+    "build:class": "ng build class",
     "lint": "npx eslint",
     "format": "npx prettier --write .",
     "sheriff:check": "sheriff verify",
