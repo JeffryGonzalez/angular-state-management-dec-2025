@@ -64,13 +64,16 @@
     "daisyui": "^5.5.8",
     "eslint": "^9.39.1",
     "eslint-plugin-import": "^2.32.0",
+    "jsdom": "^27.1.0",
     "msw": "^2.12.4",
+    "ng-packagr": "^21.0.0",
     "postcss": "^8.5.3",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
-    "typescript-eslint": "^8.49.0"
+    "typescript-eslint": "^8.49.0",
+    "vitest": "^4.0.8"
   },
   "msw": {
     "workerDirectory": [
