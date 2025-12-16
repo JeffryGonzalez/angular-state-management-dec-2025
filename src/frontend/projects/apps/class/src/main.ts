@@ -10,7 +10,7 @@ async function enableMocking() {
     return await worker.start({
       quiet: false,
       onUnhandledRequest: 'bypass',
-      waitUntilReady: true,
+      //waitUntilReady: true,
     });
   }
   return;

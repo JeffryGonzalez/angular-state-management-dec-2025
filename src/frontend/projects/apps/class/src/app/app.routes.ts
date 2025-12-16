@@ -14,6 +14,17 @@ const baseRoutes: AppRoutes = [
     },
   },
   {
+    path: 'movies',
+    loadChildren: () => import('../../domains/movies/movies.routes').then((m) => m.moviesRoutes),
+    data: {
+      title: 'Movies',
+      linkText: 'Movies',
+      iconName: 'solarGlasses',
+      pageTitle: 'Movies Page',
+      linkDescription: 'List of Movies',
+    },
+  },
+  {
     path: 'component-state',
     loadChildren: () =>
       import('../../domains/component-state/component-state.routes').then(
