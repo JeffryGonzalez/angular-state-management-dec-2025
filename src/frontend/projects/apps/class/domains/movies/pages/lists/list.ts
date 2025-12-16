@@ -2,11 +2,12 @@ import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { ApiMovie } from './types';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ListCast } from './list-cast';
 
 @Component({
   selector: 'app-movie-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe, RouterLink, ListCast],
   template: `
     <ul class=" bg-base-100 rounded-box shadow-md ">
       @for (movie of movies(); track movie.id) {
@@ -31,12 +32,7 @@ import { RouterLink } from '@angular/router';
           </div>
           <div class="flex flex-col items-end gap-2">
             <ul class="flex flex-col items-end gap-2">
-              @for (star of movie.cast; track $index) {
-                <li class="text-md ">
-                  <span class="font-bold">{{ star.actor }}</span> as
-                  <em>{{ star.role }}</em>
-                </li>
-              }
+              <app-movie-list-cast-item [cast]="movie.cast" />>
             </ul>
             <div class="flex flex-row items-start gap-2">
               <a class="btn btn-sm btn-secondary" [routerLink]="['.', movie.id]">Details</a>
