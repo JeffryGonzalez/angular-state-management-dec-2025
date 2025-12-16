@@ -2,12 +2,13 @@ import { httpResource } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { FeaturePage } from '@app-shell/features/feature-page';
 import { ApiMovie } from './lists/types';
-import { JsonPipe } from '@angular/common';
+
+import { DevInfo } from '@app-ui/dev-info';
 
 @Component({
   selector: 'app-movies-pages-details',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FeaturePage, JsonPipe],
+  imports: [FeaturePage, DevInfo],
   template: `<ui-feature-page pageName="Movie Details for Movie {{ id() }}">
     @if (movie.hasValue()) {
       <p>{{ movie.value().title }}</p>
@@ -16,7 +17,7 @@ import { JsonPipe } from '@angular/common';
     }
 
     @if (movie.error()) {
-      <p class="text-error">Error loading movie details: {{ movie.error() | json }}</p>
+      <ui-dev-info [obj]="movie.error()">Showing the error stuff</ui-dev-info>
     }
   </ui-feature-page>`,
   styles: ``,
