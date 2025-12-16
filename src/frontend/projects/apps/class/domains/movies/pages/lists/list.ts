@@ -1,12 +1,11 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { ApiMovie } from './types';
 import { DatePipe } from '@angular/common';
-import { DevNotice } from '../../dev-notice';
 
 @Component({
   selector: 'app-movie-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DatePipe, DevNotice],
+  imports: [DatePipe],
   template: `
     <ul class=" bg-base-100 rounded-box shadow-md ">
       @for (movie of movies(); track movie.id) {
@@ -43,10 +42,6 @@ import { DevNotice } from '../../dev-notice';
         </li>
       }
     </ul>
-
-    <app-dev-notice [content]="movies()">
-      <p>So Many Movies, Yo!</p>
-    </app-dev-notice>
   `,
   styles: ``,
 })

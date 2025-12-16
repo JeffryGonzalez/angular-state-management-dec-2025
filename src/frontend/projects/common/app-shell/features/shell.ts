@@ -89,7 +89,7 @@ type KbdKeysSpecificMap = {
         </div>
       </div>
 
-      <div class="justify-items-end place-items-end">
+      <div class="justify-items-start place-items-start">
         <div class="container  p-4">
           <ng-content></ng-content>
         </div>

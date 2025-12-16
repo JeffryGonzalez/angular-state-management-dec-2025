@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { RouterOutlet } from '@angular/router';
 import { FeatureShell } from '@app-shell/features/shell';
-import { DevNotice } from './dev-notice';
+
 @Component({
   selector: 'app-movies',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FeatureShell, RouterOutlet, DevNotice],
+  imports: [FeatureShell, RouterOutlet],
 
   template: `
     <ui-feature-shell title="Movies Home">
