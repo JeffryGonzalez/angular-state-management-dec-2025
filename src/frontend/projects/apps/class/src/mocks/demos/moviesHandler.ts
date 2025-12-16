@@ -297,7 +297,7 @@ const movies: ApiMovie[] = [
 
 export const movieHandlers = [
   http.get('/api/movies', async () => {
-    await delay();
+    await delay(); // ~200ms
     // return new HttpResponse(JSON.stringify(movies), {
     //   status: 200,
     //   headers: {
