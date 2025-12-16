@@ -9,7 +9,7 @@ import { ApiMovie } from './lists/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FeaturePage, DatePipe, List],
   template: `
-    <ui-feature-page pageName="About Movies">
+    <ui-feature-page pageName="The Movies">
       <app-movie-list [movies]="fakeMovies()"></app-movie-list>
     </ui-feature-page>
   `,
