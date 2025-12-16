@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, isDevMode } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { RouterOutlet } from '@angular/router';
 import { FeatureShell } from '@app-shell/features/shell';
@@ -17,9 +17,6 @@ import { DevNotice } from './dev-notice';
           <h3 class="text-3xl">Movies Movies Movies!</h3>
         </div>
 
-        @defer (when devving) {
-          <app-dev-notice message="In the movies.ts file" />
-        }
         <router-outlet></router-outlet>
       </div>
     </ui-feature-shell>
@@ -27,5 +24,5 @@ import { DevNotice } from './dev-notice';
   styles: ``,
 })
 export class Home {
-  devving = isDevMode();
+  content = input<unknown | undefined>(undefined);
 }

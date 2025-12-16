@@ -9,12 +9,7 @@
       "@app-types/*": ["projects/common/types/*"],
       "@app-auth/*": ["projects/common/auth/*"],
       "@app-errors/*": ["projects/common/errors/*"],
-      "@app-state/*": [
-        "projects/common/state/*"
-      ],
-      "state-wrapper": [
-        "./dist/state-wrapper"
-      ]
+      "@app-state/*": ["projects/common/state/*"]
     },
 
     "strict": true,
@@ -42,12 +37,6 @@
     },
     {
       "path": "./projects/apps/class/tsconfig.app.dev.json"
-    },
-    {
-      "path": "./libs/tsconfig.lib.json"
-    },
-    {
-      "path": "./libs/tsconfig.spec.json"
     }
   ]
 }
