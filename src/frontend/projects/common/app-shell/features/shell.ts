@@ -32,6 +32,7 @@ type KbdKeysSpecificMap = {
 @Component({
   selector: 'ui-feature-shell',
   changeDetection: ChangeDetectionStrategy.OnPush,
+
   imports: [NgIcon, Flower, SectionNav, ThemePicker, RouterLink, SearchModal],
   host: {
     class: 'drawer-content',
@@ -101,6 +102,7 @@ type KbdKeysSpecificMap = {
   styles: ``,
 })
 export class FeatureShell implements OnInit {
+ 
   protected prefsStore = inject(prefsStore);
   #hotkeysService = inject(HotkeysService);
   title = input.required<string>();

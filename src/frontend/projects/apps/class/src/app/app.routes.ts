@@ -15,7 +15,7 @@ const baseRoutes: AppRoutes = [
   },
   {
     path: 'movies',
-    loadChildren: () => import('../../domains/movies/movies.routes').then((m) => m.moviesRoutes),
+    loadChildren: () => import('../../domains/movies/movies.routes').then((m) => m.moviesRoutes), // Breaks all the code that lives there into a different javascript bundle.
     data: {
       title: 'Movies',
       linkText: 'Movies',
