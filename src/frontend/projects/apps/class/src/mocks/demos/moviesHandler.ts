@@ -297,14 +297,14 @@ const movies: ApiMovie[] = [
 
 export const movieHandlers = [
   http.get('/api/movies', async () => {
-    await delay(3000);
-    return new HttpResponse(JSON.stringify(movies), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'max-age=600',
-      },
-    });
+    await delay();
+    // return new HttpResponse(JSON.stringify(movies), {
+    //   status: 200,
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Cache-Control': 'max-age=600',
+    //   },
+    // });
     return HttpResponse.json(movies);
   }),
   http.get('/api/movies/:id', async ({ params }) => {

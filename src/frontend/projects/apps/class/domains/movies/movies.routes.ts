@@ -1,4 +1,5 @@
 import { Home } from './movies';
+import { DetailsPage } from './pages/details';
 import { HomePage } from './pages/home';
 
 import { FeatureRoutes } from '@app-types/routing/feature-routing';
@@ -15,7 +16,16 @@ export const moviesRoutes: FeatureRoutes = [
           linkText: 'movies',
         },
         children: [],
-      }
+      },
+      {
+        path: ':id',
+        component: DetailsPage,
+        data: {
+          title: 'Movie Details',
+          linkText: 'details',
+        },
+        children: [],
+      },
     ],
   },
 ];
