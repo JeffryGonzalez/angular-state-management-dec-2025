@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FeaturePage } from '@app-shell/features/feature-page';
 import { List } from './lists/list';
 import { ApiMovie } from './lists/types';
+import { httpResource } from '@angular/common/http';
 
 @Component({
   selector: 'app-movies-pages-home',
@@ -10,57 +11,24 @@ import { ApiMovie } from './lists/types';
   imports: [FeaturePage, DatePipe, List],
   template: `
     <ui-feature-page pageName="The Movies">
-      <app-movie-list [movies]="fakeMovies()"></app-movie-list>
+      @if (movies.hasValue()) {
+        <app-movie-list [movies]="movies.value()"></app-movie-list>
+      } @else {
+        <p>... movies have no values these days</p>
+      }
     </ui-feature-page>
   `,
   styles: ``,
 })
 export class HomePage {
-  fakeMovies = signal<ApiMovie[]>([
-    {
-      id: '1',
-      title: 'Inception',
-      releaseDate: '2010-07-16',
-      genre: 'sci-fi',
-      rating: 2,
-      director: 'Christopher Nolan',
-      cast: [
-        { role: 'Cobb', actor: 'Leonardo DiCaprio' },
-        { role: 'Arthur', actor: 'Joseph Gordon-Levitt' },
-      ],
-      duration: 148,
-      version: 1,
-    },
-    {
-      id: '2',
-      title: 'Star Wars: Episode IV - A New Hope',
-      releaseDate: '1977-05-25',
-      genre: 'sci-fi',
-      rating: 5,
-      director: 'George Lucas',
-      cast: [
-        { role: 'Luke Skywalker', actor: 'Mark Hamill' },
-        { role: 'Darth Vader', actor: 'David Prowse' },
-        { role: 'Princess Leia', actor: 'Carrie Fisher' },
-        { role: 'Han Solo', actor: 'Harrison Ford' },
-      ],
-      duration: 152,
-      version: 1,
-    },
-    {
-      id: '3',
-      title: 'Twin Peaks: Fire Walk with Me',
-      releaseDate: '1992-05-23',
-      genre: 'drama',
-      rating: 5,
-      director: 'David Lynch',
-      cast: [
-        { role: 'Dale Cooper', actor: 'Kyle MacLachlan' },
-        { role: 'Laura Palmer', actor: 'Sheryl Lee' },
-        { role: 'Bob Billings', actor: 'Michael J. Anderson' },
-      ],
-      duration: 90,
-      version: 1,
-    },
-  ]);
+  // If this is readonly data, and I just want to use this, I have no problem with the following:
+  // there are three versions of this, resource, rxResource, and httpResource
+
+  // Type Safety Theater - this is a late bound call.
+  movies = httpResource<ApiMovie[]>(() => '/api/movies');
+  // "If we let our developers make HTTP calls from the component, what if we end up with 20 components making the same http call"
+
+  // We want a way to filter and sort - maybe make that persistent.
+  // then talk about moving the data into a "store" and why you would
+  // and then do a mutation based on this - we want the user to be able to add a review for a movie.
 }
