@@ -15,6 +15,7 @@ import { toSignal } from '@angular/core/rxjs-interop'; // this is the stuff for 
 import { map } from 'rxjs';
 import { movieStore } from '../stores/movie';
 import { DialogCloseDirective } from '@ngneat/dialog';
+import { bigMovieStore } from '../stores/movie-big';
 
 @Component({
   selector: 'app-movies-pages-home',
@@ -73,6 +74,7 @@ import { DialogCloseDirective } from '@ngneat/dialog';
   styles: ``,
 })
 export class HomePage {
+  protected otherBigStore = inject(bigMovieStore);
   protected store = inject(movieStore);
   // The pound sign here is the "standard" way to make a private field in a class.
   // there is no such thing Javascript as "private". Typescript made that up.

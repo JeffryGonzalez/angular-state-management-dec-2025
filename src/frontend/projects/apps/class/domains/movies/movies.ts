@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 
 import { RouterOutlet } from '@angular/router';
+import { Authentication } from '@app-auth/authentication';
 import { FeatureShell } from '@app-shell/features/shell';
 
 @Component({
@@ -11,6 +12,7 @@ import { FeatureShell } from '@app-shell/features/shell';
   template: `
     <ui-feature-shell title="Movies Home">
       <div class="">
+        <p>You are logged on as {{ auth.userName }} {{ auth.userId }}</p>
         <router-outlet></router-outlet>
       </div>
     </ui-feature-shell>
@@ -18,5 +20,5 @@ import { FeatureShell } from '@app-shell/features/shell';
   styles: ``,
 })
 export class Home {
-  content = input<unknown | undefined>(undefined);
+  auth = inject(Authentication);
 }
