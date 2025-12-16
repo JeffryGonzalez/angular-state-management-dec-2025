@@ -14,7 +14,9 @@ import { httpResource } from '@angular/common/http';
       @if (movies.hasValue()) {
         <app-movie-list [movies]="movies.value()"></app-movie-list>
       } @else {
-        <p>... movies have no values these days</p>
+        @if (movies.isLoading()) {
+          <p>Please stand by... getting your movies...</p>
+        }
       }
     </ui-feature-page>
   `,
