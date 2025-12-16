@@ -15,30 +15,40 @@ export const moviesRoutes: FeatureRoutes = [
     children: [
       {
         path: '',
-        component: HomePage,
+        component: Home,
         data: {
           title: 'Welcome',
           linkText: 'movies',
         },
-        children: [],
-      },
-      {
-        path: 'big-movies',
-        component: MovieListTwoPage,
-        data: {
-          linkText: 'Big List of Movies',
-          title: 'Big Movie',
-        },
-        children: [],
-      },
-      {
-        path: ':id',
-        component: DetailsPage,
-        data: {
-          title: 'Movie Details',
-          linkText: 'details',
-        },
-        children: [],
+        children: [
+          {
+            path: '',
+            component: HomePage,
+            data: {
+              title: 'Movies Home Page',
+              linkText: 'home',
+            },
+            children: [],
+          },
+          {
+            path: 'big-movies',
+            component: MovieListTwoPage,
+            data: {
+              linkText: 'Big List of Movies',
+              title: 'Big Movie',
+            },
+            children: [],
+          },
+          {
+            path: ':id',
+            component: DetailsPage,
+            data: {
+              title: 'Movie Details',
+              linkText: 'details',
+            },
+            children: [],
+          },
+        ],
       },
     ],
   },
