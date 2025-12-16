@@ -22,7 +22,8 @@ import { JsonPipe } from '@angular/common';
   styles: ``,
 })
 export class DetailsPage {
-  id = input.required<string>();
+  // get /:id
+  id = input.required<string>(); // violates what I said early - one thing meaning more than one thing. But this is so helpful, I'll allow it.
 
   movie = httpResource<ApiMovie>(() => '/api/movies/' + this.id());
 }
