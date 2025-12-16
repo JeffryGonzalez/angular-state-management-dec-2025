@@ -1,8 +1,8 @@
-import { DatePipe, JsonPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FeaturePage } from '@app-shell/features/feature-page';
-import { ApiMovie } from './lists/types';
 import { List } from './lists/list';
+import { ApiMovie } from './lists/types';
 
 @Component({
   selector: 'app-movies-pages-home',
