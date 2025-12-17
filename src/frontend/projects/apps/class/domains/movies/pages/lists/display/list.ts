@@ -32,7 +32,7 @@ import { ListCast } from './list-cast';
           </div>
           <div class="flex flex-col items-end gap-2">
             <ul class="flex flex-col items-end gap-2">
-              <app-movie-list-cast-item [cast]="movie.cast" />>
+              <app-movie-list-cast-item [cast]="movie.cast" />
             </ul>
             <div class="flex flex-row items-start gap-2">
               <a class="btn btn-sm btn-secondary" [routerLink]="['.', movie.id]">Details</a>

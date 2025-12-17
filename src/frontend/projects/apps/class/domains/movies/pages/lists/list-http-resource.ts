@@ -24,9 +24,9 @@ import { ApiMovie } from '../../types';
             <button
               (click)="store.setStarRatingFilter(opt)"
               [disabled]="store.starRatingSelected() === opt"
-              class="join-item btn"
+              class="join-item btn text-yellow-400"
             >
-              {{ opt === 'all' ? 'Show All' : opt + ' Stars' }}
+              {{ opt === 'all' ? 'Show All' : getRatingStars(opt) }}
             </button>
           </div>
         }
@@ -56,4 +56,7 @@ export class ListHttpResourcePage {
   numberOfDisplayedMovies = computed(() => this.filteredMovies().length);
 
   totalNumberOfMovies = computed(() => this.moviesResource.value()?.length || 0);
+  getRatingStars(rating: number): string {
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  }
 }
