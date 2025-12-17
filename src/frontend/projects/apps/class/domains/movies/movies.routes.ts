@@ -4,8 +4,6 @@ import { HomePage } from './pages/home';
 
 import { FeatureRoutes } from '@app-types/routing/feature-routing';
 
-import { bigMovieStore } from './stores/movie-big';
-import { MovieService } from './stores/movie-service';
 import { ListWithHttpClientPage } from './pages/lists/list-with-http-client';
 import { DetailsPage } from './pages/lists/details';
 import { ListsPage } from './pages/lists/home';
@@ -15,8 +13,8 @@ export const moviesRoutes: FeatureRoutes = [
   {
     path: '', // I have no idea what I'm called to the outside world. This is for the app.routes to decide.
     component: Home,
-    providers: [bigMovieStore, MovieService], // if you provide on a route, it is available to any "child" of this route.
-    // it is created "lazily" - when it is first used, but never taken out of memory. It stays there. You MIGHT want that.
+    providers: [movieStore], // if you provide on a route, it is available to any "child" of this route.
+    // it is created "lazily" - when it is first used, but never taken ot of memory. It stays there. You MIGHT want that.
     children: [
       {
         path: '',
@@ -31,7 +29,7 @@ export const moviesRoutes: FeatureRoutes = [
       {
         path: 'list',
         component: ListsPage,
-        providers: [MovieService, movieStore],
+        providers: [],
         data: {
           title: 'Movie Lists',
           linkText: 'Movie Lists',

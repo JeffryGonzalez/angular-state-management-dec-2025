@@ -4,14 +4,19 @@ import { FeaturePage } from '@app-shell/features/feature-page';
 
 import { DevInfo } from '@app-ui/dev-info';
 import { ApiMovie } from '../../types';
+import { MovieListItem } from './display/list-item';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-movies-pages-details',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FeaturePage, DevInfo],
+  imports: [FeaturePage, DevInfo, MovieListItem, RouterLink],
   template: `<ui-feature-page pageName="Movie Details for Movie {{ id() }}">
     @if (movie.hasValue()) {
-      <p>{{ movie.value().title }}</p>
+      <div class="flex flex-col gap-4">
+        <a routerLink=".." class="btn btn-sm btn-primary w-1/6">Back to List</a>
+        <app-movie-list-item [movieToDisplay]="movie.value()"></app-movie-list-item>
+      </div>
     } @else {
       <p>Loading movie details for id {{ id() }}...</p>
     }

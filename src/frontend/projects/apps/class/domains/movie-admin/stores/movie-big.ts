@@ -6,11 +6,11 @@ import {
   withProps,
   withState,
 } from '@ngrx/signals';
-import { ApiMovie, movieRatingsList } from '../types';
+import { ApiMovie, movieRatingsList } from '../../movies/types';
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { inject, isDevMode } from '@angular/core';
 import { setEntities, withEntities } from '@ngrx/signals/entities';
-import { MovieService } from './movie-service';
+import { MovieService } from '../../movies/stores/movie-service';
 
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { mapResponse, tapResponse } from '@ngrx/operators';

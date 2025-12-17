@@ -1,17 +1,17 @@
-import { Component, ChangeDetectionStrategy, inject, computed } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, computed, input, effect } from '@angular/core';
 import { movieStore } from '../../stores/movie';
 import { MoviesList } from './display/list';
 import { httpResource } from '@angular/common/http';
-import { ApiMovie } from '../../types';
+import { ApiMovie, MovieRatings, movieRatingsList } from '../../types';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-movies-lists-http-resource',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MoviesList],
+  imports: [MoviesList, RouterLink],
   template: `
     @if (moviesResource.isLoading()) {
       <p>Loading movies...</p>
-      <
     }
     @if (moviesResource.error()) {
       <p>Error loading movies.</p>
@@ -21,13 +21,15 @@ import { ApiMovie } from '../../types';
       <div class="flex flex-row items-center mb-4">
         @for (opt of store.filterByOptions; track opt) {
           <div class="join">
-            <button
-              (click)="store.setStarRatingFilter(opt)"
-              [disabled]="store.starRatingSelected() === opt"
+            <a
+              [class.bg-secondary]="filterBy() === opt.toString()"
+              [class.text-secondary-content]="filterBy() === opt.toString()"
+              [routerLink]="['.']"
+              [queryParams]="{ filterBy: opt }"
               class="join-item btn text-yellow-400"
             >
               {{ opt === 'all' ? 'Show All' : getRatingStars(opt) }}
-            </button>
+            </a>
           </div>
         }
         <span class="bg-base-content text-base-100 rounded-full px-3 py-1 ml-4">
@@ -41,6 +43,7 @@ import { ApiMovie } from '../../types';
 })
 export class ListHttpResourcePage {
   store = inject(movieStore);
+  filterBy = input.required<string>();
 
   moviesResource = httpResource<ApiMovie[]>(() => '/api/movies');
 
@@ -58,5 +61,17 @@ export class ListHttpResourcePage {
   totalNumberOfMovies = computed(() => this.moviesResource.value()?.length || 0);
   getRatingStars(rating: number): string {
     return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  }
+
+  constructor() {
+    effect(() => {
+      const filter = this.filterBy();
+      if (filter === 'all') {
+        this.store.setStarRatingFilter('all');
+        return;
+      }
+      const fNum = Number(filter) as MovieRatings;
+      if (movieRatingsList.includes(fNum)) this.store.setStarRatingFilter(fNum);
+    });
   }
 }

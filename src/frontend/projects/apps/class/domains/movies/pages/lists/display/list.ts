@@ -3,41 +3,21 @@ import { ApiMovie } from '../../../types';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ListCast } from './list-cast';
+import { MovieListItem } from './list-item';
 
 @Component({
   selector: 'app-movies-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DatePipe, RouterLink, ListCast],
+  imports: [RouterLink, ListCast, MovieListItem],
   template: `
     <ul class=" bg-base-100 rounded-box shadow-md ">
       @for (movie of movies(); track movie.id) {
-        <li
-          class=" border-b border-base-200 border-4 p-4 flex flex-row items-start justify-between"
-        >
-          <div class="flex flex-col items-start justify-items-start gap-2">
-            <div class="text-2xl font-black text-accent">
-              {{ movie.title }}
-
-              {{ getRatingStars(movie.rating) }}
-            </div>
-            <div class="text-lg uppercase font-semibold ">{{ movie.director }}, director</div>
-            <div class="flex flex-row items-start gap-2">
-              <div class="text-sm ">{{ movie.genre }}</div>
-              <div class="text-sm ">{{ movie.duration }} min</div>
-
-              <div class="text-sm ">
-                {{ movie.releaseDate | date: 'yyyy' }}
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-col items-end gap-2">
-            <ul class="flex flex-col items-end gap-2">
-              <app-movie-list-cast-item [cast]="movie.cast" />
-            </ul>
+        <li>
+          <app-movie-list-item [movieToDisplay]="movie">
             <div class="flex flex-row items-start gap-2">
               <a class="btn btn-sm btn-secondary" [routerLink]="['.', movie.id]">Details</a>
             </div>
-          </div>
+          </app-movie-list-item>
         </li>
       }
     </ul>
