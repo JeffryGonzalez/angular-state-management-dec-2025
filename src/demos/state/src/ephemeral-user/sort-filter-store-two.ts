@@ -39,6 +39,9 @@ export const SortFilterStoreTwo = signalStore(
           orderBy: savedState.orderBy,
         });
       }
+      // signal store - sort of like an "effect" -
+      // what if your store has a bunch of stuff that changes frequently but you only want to save part of that?
+
       watchState(state, (current) => {
         localStorage.setItem('sort-filter-state', JSON.stringify(current));
       });

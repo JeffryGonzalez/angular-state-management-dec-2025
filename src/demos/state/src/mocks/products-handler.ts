@@ -65,7 +65,7 @@ export const ProductHandler = [
       price: number;
     };
     PRODUCTS = [...PRODUCTS, newProduct];
-    await settableDelay();
+    await delay(4000);
     return HttpResponse.json(newProduct);
   }),
   http.put('https://some-api/products/:id', async ({ request }) => {

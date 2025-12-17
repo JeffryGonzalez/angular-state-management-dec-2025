@@ -31,6 +31,7 @@ export function addOutboxFeatureInterceptor(): HttpInterceptorFn {
         method: req.method,
       };
       store.requestSent(payload);
+      // above this line is what is run BEFORE it makes the actually http call.
       return next(req).pipe(
         tap((r) => {
           if (r.type === HttpEventType.Response) {

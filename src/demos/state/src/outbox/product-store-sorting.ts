@@ -10,6 +10,7 @@ type SortKey = 'name' | 'price';
 type SortOrder = 'asc' | 'desc';
 
 export function withProductSorting() {
+  // new feature
   return signalStoreFeature(
     withState({
       sortKey: 'price' as SortKey,
