@@ -34,7 +34,7 @@ npx gitpick -o JeffryGonzalez/angular-state-management-dec-2025/tree/main/src/fr
 
 I also added a new domain - "MoviesAdmin" - grab that, too:
 ```sh
-npx gitpick -o JeffryGonzalez/angular-state-management-dec-2025/tree/main/src/frontend/projects/apps/class/domains/movies-admin ./projects/apps/class/domains/movies-admin
+npx gitpick -o JeffryGonzalez/angular-state-management-dec-2025/tree/main/src/frontend/projects/apps/class/domains/movie-admin ./projects/apps/class/domains/movies-admin
 ```
 
 You'll need to add a route for this. In your `app.routes.ts` add the following route right below the route for movies:
