@@ -1,6 +1,7 @@
 import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
+import { notificationFeature } from '@app-shell/application/notifications-feature';
 import { routerReducer, provideRouterStore, RouterState } from '@ngrx/router-store';
-import { provideStore } from '@ngrx/store';
+import { provideState, provideStore } from '@ngrx/store';
 
 export function provideNgrxStoreForApp(): EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -10,5 +11,6 @@ export function provideNgrxStoreForApp(): EnvironmentProviders {
     provideRouterStore({
       routerState: RouterState.Minimal,
     }),
+    provideState(notificationFeature),
   ]);
 }

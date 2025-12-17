@@ -10,6 +10,8 @@ import { NavLink } from './internal/nav-link';
 import { profileStore } from '@app-auth/profile/profile';
 import { NgIcon } from '@ng-icons/core';
 import { routingStore } from './providers/routing-store';
+import { Store } from '@ngrx/store';
+import { notificationEvents, selectNotifications } from './notifications-feature';
 
 @Component({
   selector: 'ui-application-shell',
@@ -47,6 +49,16 @@ import { routingStore } from './providers/routing-store';
         </div>
       </div>
     </div>
+    <div class="toast toast-top toast-end">
+      @for (notification of notifications(); track notification.id) {
+        <div class="alert alert-info">
+          <span>{{ notification.message }} from {{ notification.from }}</span>
+          <button (click)="cancelNotification(notification.id)" class="btn btn-xs btn-primary">
+            X
+          </button>
+        </div>
+      }
+    </div>
   `,
   styles: ``,
 })
@@ -57,10 +69,14 @@ export class ApplicationShell {
   #router = inject(Router);
   #helpDialog = inject(DialogService);
   #hotkeysService = inject(HotkeysService);
-
+  reduxStore = inject(Store);
+  protected notifications = this.reduxStore.selectSignal(selectNotifications);
   protected profileStore = inject(profileStore);
   protected routingStore = inject(routingStore);
 
+  cancelNotification(id: string) {
+    this.reduxStore.dispatch(notificationEvents.dismissNotification({ payload: id }));
+  }
   protected prefsStore = inject(prefsStore);
 
   constructor() {
