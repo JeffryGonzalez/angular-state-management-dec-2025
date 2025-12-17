@@ -50,11 +50,19 @@ export const movieAdminStore = signalStore(
         const newDirection = store.sortDirection() === 'asc' ? 'desc' : 'asc';
         patchState(store, { sortingBy, sortDirection: newDirection });
       },
-      // resetReviews: (id: string) =>
-      //   patchState(
-      //     store,
-      //     updateEntity({id: changes: {}}, { collection: '_movies'})
-      //   ),
+      resetReviews: (id: string) =>
+        patchState(
+          store,
+          updateEntity(
+            {
+              id: id,
+              changes: {
+                rating: 1,
+              },
+            },
+            { collection: '_movies' },
+          ),
+        ),
       deleteMovie: (id: string) => patchState(store, removeEntity(id, { collection: '_movies' })),
       _load: rxMethod<void>(
         pipe(

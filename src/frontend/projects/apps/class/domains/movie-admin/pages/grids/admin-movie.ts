@@ -13,7 +13,6 @@ import { Edit } from './edit';
         <!-- head -->
         <thead>
           <tr>
-            <th></th>
             <th>
               <button
                 class="btn btn-ghost"
@@ -62,6 +61,7 @@ import { Edit } from './edit';
                 }
               </button>
             </th>
+            <th>Reviews</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -69,10 +69,10 @@ import { Edit } from './edit';
           <!-- row 1 -->
           @for (movie of store.movies(); track movie.id) {
             <tr class="odd:bg-base-300 ">
-              <th class="opacity-50">{{ movie.id }}</th>
               <td>{{ movie.title }}</td>
               <td>{{ movie.director }}</td>
               <td>{{ movie.releaseDate | date }}</td>
+              <td>{{ movie.rating }} ⭐</td>
               <td class=" h-20   items-center justify-items-center w-fit flex flex-row">
                 <div class="flex flex-row gap-2">
                   <button (click)="edit(movie.id)" class="btn btn-xs btn-primary">Edit</button>
