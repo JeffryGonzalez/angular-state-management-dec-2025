@@ -16,7 +16,7 @@ import { FeatureChildRoute } from '../../../types/routing/feature-routing';
 export type LinkDocument = {
   name: string;
   readonly path: string[] | string | undefined;
-  data: { linkText: string };
+  data: { linkText: string; hide?: boolean };
 };
 export type LinkFolder = LinkDocument & {
   documents: LinkDocument[];

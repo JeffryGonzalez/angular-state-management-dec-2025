@@ -1,12 +1,12 @@
 import { patchState, signalStore, withMethods, withProps, withState } from '@ngrx/signals';
-import { movieRatingsList } from '../pages/lists/types';
+import { movieRatingsList } from '../types';
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { isDevMode } from '@angular/core';
 
 const storeRatingFilters = [...movieRatingsList, 'all'] as const;
 type FilterSelections = (typeof storeRatingFilters)[number];
 type MovieStoreState = {
-  filterByStarRating: FilterSelections;
+  starRatingSelected: FilterSelections;
 };
 
 export const movieStore = signalStore(
@@ -17,12 +17,12 @@ export const movieStore = signalStore(
     filterByOptions: storeRatingFilters,
   })),
   withState<MovieStoreState>({
-    filterByStarRating: 'all',
+    starRatingSelected: 'all',
   }),
   withMethods((store) => {
     return {
-      setFilter: (filterByStarRating: FilterSelections) =>
-        patchState(store, { filterByStarRating }),
+      setStarRatingFilter: (starRatingSelected: FilterSelections) =>
+        patchState(store, { starRatingSelected }),
     };
   }),
 );

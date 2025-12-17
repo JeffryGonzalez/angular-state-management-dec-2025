@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { ApiMovie } from './types';
+import { ApiMovie } from '../../../types';
 
 @Component({
   selector: 'app-movie-list-cast-item',

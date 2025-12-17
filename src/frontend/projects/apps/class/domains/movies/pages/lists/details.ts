@@ -1,9 +1,9 @@
 import { httpResource } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { FeaturePage } from '@app-shell/features/feature-page';
-import { ApiMovie } from './lists/types';
 
 import { DevInfo } from '@app-ui/dev-info';
+import { ApiMovie } from '../../types';
 
 @Component({
   selector: 'app-movies-pages-details',

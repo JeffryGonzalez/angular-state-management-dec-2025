@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { tap } from 'rxjs';
-import { ApiMovie } from '../pages/lists/types';
+import { ApiMovie } from '../types';
 
 export class MovieService {
   #client = inject(HttpClient);

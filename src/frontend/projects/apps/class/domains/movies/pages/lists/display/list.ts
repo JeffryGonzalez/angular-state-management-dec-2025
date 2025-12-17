@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { ApiMovie } from './types';
+import { ApiMovie } from '../../../types';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ListCast } from './list-cast';
 
 @Component({
-  selector: 'app-movie-list',
+  selector: 'app-movies-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [DatePipe, RouterLink, ListCast],
   template: `
@@ -44,7 +44,7 @@ import { ListCast } from './list-cast';
   `,
   styles: ``,
 })
-export class List {
+export class MoviesList {
   movies = input.required<ApiMovie[]>();
 
   getRatingStars(rating: number): string {

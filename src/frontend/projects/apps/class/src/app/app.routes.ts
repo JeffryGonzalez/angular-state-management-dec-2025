@@ -19,9 +19,22 @@ const baseRoutes: AppRoutes = [
     data: {
       title: 'Movies',
       linkText: 'Movies',
-      iconName: 'solarGlasses',
+      iconName: 'solarVideoFrameCut',
       pageTitle: 'Movies Page',
       linkDescription: 'List of Movies',
+    },
+  },
+  {
+    path: 'movie-admin',
+    loadChildren: () =>
+      import('../../domains/movie-admin/movie-admin.routes').then((m) => m.movieAddminRoutes),
+    data: {
+      title: 'Movie Admin',
+      linkText: 'Movie Admin',
+      iconName: 'solarVideoFrameCut',
+      pageTitle: 'Movie Admin Page',
+      requiresAuth: true,
+      linkDescription: 'Administration of Movies',
     },
   },
   {

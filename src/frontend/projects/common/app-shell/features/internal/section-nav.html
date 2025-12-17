@@ -4,7 +4,7 @@
   <ul class="flex flex-row flex-wrap">
     <li class="flex flex-row flex-wrap">
       @for (folder of folders; track $index) {
-        @if (folder.name !== 'Home') {
+        @if (folder.name !== 'Home' && folder.data.hide !== true) {
           <ui-folder-display
             [selectedFolder]="selectedFolder()"
             [folder]="folder"
@@ -14,15 +14,18 @@
           ></ui-folder-display>
         }
         @for (child of folder.documents; track $index) {
-          <ui-document-display
-            [selected]="selectedDocument() == child.name"
-            [child]="child"
-            [parentSelected]="selectedFolder() == folder.name"
-            [parentName]="folder.name"
-            [path]="child.path"
-            (click)="selectedDocument.set(child.name)"
-            [text]="child.data.linkText"
-          ></ui-document-display>
+          @if (child.data.hide !== true) {
+            <ui-document-display
+              [selected]="selectedDocument() == child.name"
+              [child]="child"
+              [parentSelected]="selectedFolder() == folder.name"
+              [parentName]="folder.name"
+              [path]="child.path"
+              (click)="selectedDocument.set(child.name)"
+              [text]="child.data.linkText"
+            ></ui-document-display>
+            hide me {{ !!child.data.hide }}
+          }
         }
       }
     </li>

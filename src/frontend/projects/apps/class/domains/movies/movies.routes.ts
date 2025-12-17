@@ -1,11 +1,16 @@
 import { Home } from './movies';
-import { DetailsPage } from './pages/details';
+
 import { HomePage } from './pages/home';
 
 import { FeatureRoutes } from '@app-types/routing/feature-routing';
-import { MovieListTwoPage } from './pages/movie-list-two';
+
 import { bigMovieStore } from './stores/movie-big';
 import { MovieService } from './stores/movie-service';
+import { ListWithHttpClientPage } from './pages/lists/list-with-http-client';
+import { DetailsPage } from './pages/lists/details';
+import { ListsPage } from './pages/lists/home';
+import { movieStore } from './stores/movie';
+import { ListHttpResourcePage } from './pages/lists/list-http-resource';
 export const moviesRoutes: FeatureRoutes = [
   {
     path: '', // I have no idea what I'm called to the outside world. This is for the app.routes to decide.
@@ -15,27 +20,38 @@ export const moviesRoutes: FeatureRoutes = [
     children: [
       {
         path: '',
-        component: Home,
+        providers: [],
+        component: HomePage,
         data: {
           title: 'Welcome',
           linkText: 'movies',
         },
+        children: [],
+      },
+      {
+        path: 'list',
+        component: ListsPage,
+        providers: [MovieService, movieStore],
+        data: {
+          title: 'Movie Lists',
+          linkText: 'Movie Lists',
+        },
         children: [
           {
             path: '',
-            component: HomePage,
+            component: ListHttpResourcePage,
             data: {
-              title: 'Movies Home Page',
-              linkText: 'home',
+              title: 'Movie Lists with HttpResource',
+              linkText: 'List with HttpResource',
             },
             children: [],
           },
           {
-            path: 'big-movies',
-            component: MovieListTwoPage,
+            path: 'with-http-client',
+            component: ListWithHttpClientPage,
             data: {
-              linkText: 'Big List of Movies',
-              title: 'Big Movie',
+              title: 'Movie Lists with HttpClient',
+              linkText: 'List with HttpClient',
             },
             children: [],
           },
