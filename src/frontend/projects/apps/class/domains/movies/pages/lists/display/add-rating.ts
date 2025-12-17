@@ -30,31 +30,33 @@ export type MovieRatingRequest = {
     @if (submitted() === true) {
       <p>Thanks, you rock!</p>
     } @else {
-      <div class="flex flex-row justify-items-center items-stretch gap-8 w-full">
-        <form novalidate (submit)="handleSubmit($event)">
-          <div class="flex flex-col gap-4 h-fit">
-            <fieldset class="fieldset">
-              <legend class="fieldset-legend">Your Rating</legend>
-              <app-movie-rating-input [field]="form.rating"></app-movie-rating-input>
-            </fieldset>
-            <fieldset class="fieldset">
-              <legend class="fieldset-legend">Your Comment</legend>
-              <label class="label" for="comment">Comment:</label>
-              <textarea
-                [field]="form.comment"
-                id="comment"
-                class="textarea validator"
-                rows="8"
-                cols="12"
-                placeholder="Tell us what you thought."
-              ></textarea>
-            </fieldset>
-            <button type="submit" class="btn btn-primary w-1/6" closeAllDialogs>
-              Submit Rating
-            </button>
-          </div>
-        </form>
-        <div class="w-1/3 bg-base-300 p-4 rounded-lg">
+      <div class="flex flex-row justify-items-start items-start gap-8 w-full">
+        <div class="flex-1">
+          <form novalidate (submit)="handleSubmit($event)">
+            <div class="flex flex-col gap-4 h-fit">
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">Your Rating</legend>
+                <app-movie-rating-input [field]="form.rating"></app-movie-rating-input>
+              </fieldset>
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">Your Comment</legend>
+                <label class="label" for="comment">Comment:</label>
+                <textarea
+                  [field]="form.comment"
+                  id="comment"
+                  class="textarea validator"
+                  rows="8"
+                  cols="12"
+                  placeholder="Tell us what you thought."
+                ></textarea>
+              </fieldset>
+              <button type="submit" class="btn btn-primary w-1/6" closeAllDialogs>
+                Submit Rating
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="flex-1 bg-base-300 p-4 rounded-lg">
           <pre>
 Form Value:
 {{ form().value() | json }}
