@@ -1,18 +1,9 @@
-import { Component, ChangeDetectionStrategy, input, signal } from '@angular/core';
-import { MovieRatings } from '../../../types';
-import {
-  form,
-  required,
-  maxLength,
-  minLength,
-  Field,
-  schema,
-  applyWhen,
-  applyWhenValue,
-} from '@angular/forms/signals';
-import { CloseAllDialogsDirective } from '@ngneat/dialog';
-import { RatingInput } from './rating-input';
 import { JsonPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { applyWhen, Field, form, maxLength, minLength, required } from '@angular/forms/signals';
+import { CloseAllDialogsDirective } from '@ngneat/dialog';
+import { MovieRatings } from '../../../types';
+import { RatingInput } from './rating-input';
 export type MovieRatingRequest = {
   movie: {
     id: string;
@@ -61,8 +52,8 @@ export type MovieRatingRequest = {
 Form Value:
 {{ form().value() | json }}
 
-         
-Error Summary:  
+
+Error Summary:
 {{ form().errorSummary() | json }}
 
 
@@ -90,8 +81,8 @@ export class AddRating {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorition: 'Bearer blah blah',
         },
+
         body: JSON.stringify(this.form().value()),
       });
       this.submitted.set(true);

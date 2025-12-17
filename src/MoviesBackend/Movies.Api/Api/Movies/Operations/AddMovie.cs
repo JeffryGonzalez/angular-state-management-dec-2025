@@ -7,8 +7,12 @@ namespace Movies.Api.Api.Movies.Operations;
 
 public static class AddMovie
 {
-    public static async  Task<Created<MovieDetailsResponse>> Process(MovieCreateRequest request, IDocumentSession session)
+    public static async  Task<Results<Created<MovieDetailsResponse>, BadRequest<string>>> Process(MovieCreateRequest request, IDocumentSession session)
     {
+        if(request.Title.ToLower().Contains("forbidden"))
+        {
+            return TypedResults.BadRequest("Movie title contains forbidden word.");
+        }
         var entity = new MovieEntity()
         {
             Id = Guid.NewGuid(),
