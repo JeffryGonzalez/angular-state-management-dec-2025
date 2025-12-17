@@ -1,5 +1,12 @@
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+
+import { AddRatingRequest } from '../../../../../../../common/api-clients/movies';
+import { zAddRatingRequest } from '../../../../../../../common/api-clients/movies/zod.gen';
+
+const createRatingSchema = schema<AddRatingRequest>((path) => {
+  validateStandardSchema(path, zAddRatingRequest);
+});
 import {
   applyWhen,
   Field,
@@ -8,6 +15,8 @@ import {
   min,
   minLength,
   required,
+  schema,
+  validateStandardSchema,
 } from '@angular/forms/signals';
 import { CloseAllDialogsDirective } from '@ngneat/dialog';
 import { MovieRatings } from '../../../types';
@@ -108,20 +117,5 @@ export class AddRating {
 
   // validation can be a function like I'm doing here, with built in or custom validators, sync or async,
   // or they can be any Standard Schema validations.
-  form = form(this.#default, (schemaPath) => {
-    // when the reating is 2 or below, comment must be at least 20 characters
-    // Justify your negativity!
-    applyWhen(
-      schemaPath.comment,
-      ({ valueOf }) => valueOf(schemaPath.rating) <= 2,
-      (s) => minLength(s, 20),
-    );
-    required(schemaPath.comment);
-    minLength(schemaPath.comment, 10);
-
-    maxLength(schemaPath.comment, 500);
-    required(schemaPath.rating);
-
-    min(schemaPath.rating, 4);
-  });
+  form = form(this.#default, createRatingSchema);
 }

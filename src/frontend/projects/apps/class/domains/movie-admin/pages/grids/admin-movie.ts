@@ -72,7 +72,7 @@ import { Edit } from './edit';
               <td>{{ movie.title }}</td>
               <td>{{ movie.director }}</td>
               <td>{{ movie.releaseDate | date }}</td>
-              <td>{{ movie.rating }} ⭐</td>
+              <td>{{ movie.ratings }} ⭐</td>
               <td class=" h-20   items-center justify-items-center w-fit flex flex-row">
                 <div class="flex flex-row gap-2">
                   <button (click)="edit(movie.id)" class="btn btn-xs btn-primary">Edit</button>

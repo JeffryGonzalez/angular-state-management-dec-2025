@@ -8,7 +8,8 @@
     "lint": "npx eslint",
     "format": "npx prettier --write .",
     "sheriff:check": "sheriff verify",
-    "sheriff:list": "sheriff list"
+    "sheriff:list": "sheriff list",
+    "generate-types": "openapi-ts"
   },
   "prettier": {
     "printWidth": 100,
@@ -53,6 +54,7 @@
     "@angular/cli": "^21.0.3",
     "@angular/compiler-cli": "^21.0.0",
     "@catppuccin/daisyui": "^2.1.1",
+    "@hey-api/openapi-ts": "^0.89.0",
     "@softarc/eslint-plugin-sheriff": "^0.19.6",
     "@softarc/sheriff-core": "^0.19.6",
     "@tailwindcss/forms": "^0.5.10",
@@ -73,7 +75,8 @@
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.49.0",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.8",
+    "zod": "^4.2.1"
   },
   "msw": {
     "workerDirectory": [

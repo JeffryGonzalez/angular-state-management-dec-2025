@@ -12,15 +12,16 @@ import {
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { computed, inject, isDevMode } from '@angular/core';
 import { removeEntity, setEntities, updateEntity, withEntities } from '@ngrx/signals/entities';
+import { MovieDetailsResponse } from '../../../../../common/api-clients/movies';
 
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { mapResponse } from '@ngrx/operators';
 import { exhaustMap, pipe, tap } from 'rxjs';
-import { ApiMovie, movieRatingsList } from '../types';
+import { movieRatingsList } from '../types';
 import { MovieService } from './movie-service';
 const storeRatingFilters = [...movieRatingsList, 'all'] as const;
 type FilterSelections = (typeof storeRatingFilters)[number];
-type SortableColumns = keyof Pick<ApiMovie, 'title' | 'director' | 'releaseDate'>;
+type SortableColumns = keyof Pick<MovieDetailsResponse, 'title' | 'director' | 'releaseDate'>;
 type MovieStoreState = {
   filterByStarRating: FilterSelections;
   sortingBy: SortableColumns;
@@ -31,7 +32,7 @@ export const movieAdminStore = signalStore(
   withDevtools('movies-admin-store'),
   // a feature that lets you add properties to your store for mostly convenience. They are usually non-signals. Can be a place to add rx stuff.
   // withEntities<ApiMovie>() // entities(), entitiesMap(), entitiesId()
-  withEntities({ entity: type<ApiMovie>(), collection: '_movies' }),
+  withEntities({ entity: type<MovieDetailsResponse>(), collection: '_movies' }),
 
   withProps(() => ({
     developing: isDevMode(),
@@ -57,7 +58,7 @@ export const movieAdminStore = signalStore(
             {
               id: id,
               changes: {
-                rating: 1,
+                ratings: 1,
               },
             },
             { collection: '_movies' },
