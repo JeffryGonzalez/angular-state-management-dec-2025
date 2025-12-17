@@ -2,7 +2,6 @@ import { sameTag, SheriffConfig } from '@softarc/sheriff-core';
 
 export const config: SheriffConfig = {
   entryPoints: {
-    home: '/projects/apps/software-center/src/main.ts',
     class: '/projects/apps/class/src/main.ts',
   },
   autoTagging: false,
@@ -13,7 +12,7 @@ export const config: SheriffConfig = {
     // Anything in the projects/apps directory is to be an Angular application (something you can server).
     'projects/apps/<domain>': {
       // Within each app, anything in a domain folder is a feature module.
-      'domains/<feature>': ['type:angular-app-domain', 'feature:<feature>'],
+      'features/<feature>': ['type:angular-app-domain', 'feature:<feature>'],
       // Give it all access to itself.
       'src/app/<type>': ['type:angular-app'],
     },
@@ -28,6 +27,12 @@ export const config: SheriffConfig = {
     'projects/common/auth': ['type:angular-lib'],
     'projects/common/errors': ['type:angular-lib'],
     'projects/common/state': ['type:angular-lib'],
+    'projects/commmon/api-clients/<feature>': [
+      'type:common',
+      'type:api-client',
+      'type:angular-lib',
+      'feature:<feature>',
+    ],
   },
   depRules: {
     // Common stuff can use common stuff.
@@ -60,6 +65,7 @@ export const config: SheriffConfig = {
       sameTag,
     ],
     'type:angular-lib-internal': ['type:angular-feature-lib', 'type:angular-app-lib', sameTag],
+    'type:api-client': ['type:common', sameTag],
     root: ['*'],
   },
 };
