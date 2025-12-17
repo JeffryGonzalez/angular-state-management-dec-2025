@@ -296,6 +296,12 @@ const movies: ApiMovie[] = [
 ];
 
 export const movieHandlers = [
+  http.post('/api/movies/ratings', async (req) => {
+    await delay(2000);
+
+    console.log('Received new movie rating:');
+    return HttpResponse.json({ message: 'Rating submitted successfully' }, { status: 201 });
+  }),
   http.get('/api/movies', async () => {
     await delay(); // ~200ms
     // return new HttpResponse(JSON.stringify(movies), {

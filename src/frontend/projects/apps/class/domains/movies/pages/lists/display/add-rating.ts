@@ -18,38 +18,60 @@ export type MovieRatingRequest = {
   imports: [CloseAllDialogsDirective, RatingInput, Field, JsonPipe],
   template: `
     <h2 class="text-2xl font-bold mb-4">Add Rating for Movie {{ movieId() }}</h2>
-    <form novalidate (submit)="handleSubmit($event)">
-      <div class="flex flex-col gap-4 h-fit">
-        <fieldset class="fieldset">
-          <legend class="fieldset-legend">Your Rating</legend>
-          <app-movie-rating-input [field]="form.rating"></app-movie-rating-input>
-        </fieldset>
-        <fieldset class="fieldset">
-          <legend class="fieldset-legend">Your Comment</legend>
-          <label class="label" for="comment">Comment:</label>
-          <textarea
-            [field]="form.comment"
-            id="comment"
-            class="textarea validator"
-            rows="8"
-            cols="12"
-            placeholder="Tell us what you thought."
-          ></textarea>
-          <div class="validator-hint">{{ form.comment().errorSummary() | json }}</div>
-        </fieldset>
-        <button type="submit" class="btn btn-primary w-1/6" closeAllDialogs>Submit Rating</button>
-      </div>
-    </form>
+    @if (submitted() === true) {
+      <p>Thanks, you rock!</p>
+    } @else {
+      <form novalidate (submit)="handleSubmit($event)">
+        <div class="flex flex-col gap-4 h-fit">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your Rating</legend>
+            <app-movie-rating-input [field]="form.rating"></app-movie-rating-input>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your Comment</legend>
+            <label class="label" for="comment">Comment:</label>
+            <textarea
+              [field]="form.comment"
+              id="comment"
+              class="textarea validator"
+              rows="8"
+              cols="12"
+              placeholder="Tell us what you thought."
+            ></textarea>
+            <p class="validation-hint">Minimum 10 characters, maximum 500 characters.</p>
+          </fieldset>
+          <button type="submit" class="btn btn-primary w-1/6" closeAllDialogs>Submit Rating</button>
+        </div>
+      </form>
+    }
   `,
   styles: ``,
 })
 export class AddRating {
   movieId = input.required<string>();
   movieVersion = input.required<number>();
-  handleSubmit(event: SubmitEvent) {
+  async handleSubmit(event: SubmitEvent) {
     // todo
     event.preventDefault();
+    if (this.form().valid()) {
+      this.form().value().movie.id = this.movieId();
+      this.form().value().movie.version = this.movieVersion();
+      console.log('Submitting rating:', this.form().value());
+
+      await fetch('/api/movies/ratings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorition: 'Bearer blah blah',
+        },
+        body: JSON.stringify(this.form().value()),
+      });
+      this.submitted.set(true);
+    } else {
+      return;
+    }
   }
+  submitted = signal(false);
 
   #default = signal<MovieRatingRequest>({
     movie: { id: '', version: 0 },
