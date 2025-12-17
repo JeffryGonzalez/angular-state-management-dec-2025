@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, model, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, model, signal } from '@angular/core';
 
 import { FormValueControl } from '@angular/forms/signals';
 import { MovieRatings } from '../../../types';
@@ -20,7 +20,7 @@ import { StarIcon } from './star-icon';
       </button>
     }
 
-    <span>{{ value() }} out of 5 stars</span>
+    <span>{{ min() }} minimum - {{ value() }} out of 5 stars</span>
   `,
   styles: ``,
 })
@@ -45,6 +45,8 @@ export class RatingInput implements FormValueControl<MovieRatings> {
   // name?: InputSignal<string> | InputSignalWithTransform<string, unknown> | undefined;
   // required?: InputSignal<boolean> | InputSignalWithTransform<boolean, unknown> | undefined;
   // min?: InputSignal<number | undefined> | InputSignalWithTransform<number | undefined, unknown> | undefined;
+
+  min = input<number | undefined>(undefined);
   // minLength?: InputSignal<number | undefined> | InputSignalWithTransform<number | undefined, unknown> | undefined;
   // max?: InputSignal<number | undefined> | InputSignalWithTransform<number | undefined, unknown> | undefined;
   // maxLength?: InputSignal<number | undefined> | InputSignalWithTransform<number | undefined, unknown> | undefined;

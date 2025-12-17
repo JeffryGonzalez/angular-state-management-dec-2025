@@ -1,6 +1,14 @@
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
-import { applyWhen, Field, form, maxLength, minLength, required } from '@angular/forms/signals';
+import {
+  applyWhen,
+  Field,
+  form,
+  maxLength,
+  min,
+  minLength,
+  required,
+} from '@angular/forms/signals';
 import { CloseAllDialogsDirective } from '@ngneat/dialog';
 import { MovieRatings } from '../../../types';
 import { RatingInput } from './rating-input';
@@ -98,6 +106,8 @@ export class AddRating {
     comment: '',
   });
 
+  // validation can be a function like I'm doing here, with built in or custom validators, sync or async,
+  // or they can be any Standard Schema validations.
   form = form(this.#default, (schemaPath) => {
     // when the reating is 2 or below, comment must be at least 20 characters
     // Justify your negativity!
@@ -106,11 +116,12 @@ export class AddRating {
       ({ valueOf }) => valueOf(schemaPath.rating) <= 2,
       (s) => minLength(s, 20),
     );
-
     required(schemaPath.comment);
     minLength(schemaPath.comment, 10);
 
     maxLength(schemaPath.comment, 500);
     required(schemaPath.rating);
+
+    min(schemaPath.rating, 4);
   });
 }

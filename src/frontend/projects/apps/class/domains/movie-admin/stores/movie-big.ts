@@ -11,7 +11,7 @@ import {
 
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { computed, inject, isDevMode } from '@angular/core';
-import { setEntities, withEntities } from '@ngrx/signals/entities';
+import { removeEntity, setEntities, updateEntity, withEntities } from '@ngrx/signals/entities';
 
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { mapResponse } from '@ngrx/operators';
@@ -30,7 +30,9 @@ type MovieStoreState = {
 export const movieAdminStore = signalStore(
   withDevtools('movies-admin-store'),
   // a feature that lets you add properties to your store for mostly convenience. They are usually non-signals. Can be a place to add rx stuff.
+  // withEntities<ApiMovie>() // entities(), entitiesMap(), entitiesId()
   withEntities({ entity: type<ApiMovie>(), collection: '_movies' }),
+
   withProps(() => ({
     developing: isDevMode(),
     filterByOptions: storeRatingFilters,
@@ -48,7 +50,12 @@ export const movieAdminStore = signalStore(
         const newDirection = store.sortDirection() === 'asc' ? 'desc' : 'asc';
         patchState(store, { sortingBy, sortDirection: newDirection });
       },
-
+      // resetReviews: (id: string) =>
+      //   patchState(
+      //     store,
+      //     updateEntity({id: changes: {}}, { collection: '_movies'})
+      //   ),
+      deleteMovie: (id: string) => patchState(store, removeEntity(id, { collection: '_movies' })),
       _load: rxMethod<void>(
         pipe(
           exhaustMap(() =>

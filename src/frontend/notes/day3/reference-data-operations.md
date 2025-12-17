@@ -93,3 +93,32 @@ price: 999.99
 version: 2
 
 HTTP responses can have a header called an "entity tag" (etag)
+
+## Patterns -
+
+"Optimistic"
+
+- I delete it locally, THEN send the request the server, and if I don't get an error, cool.
+  if I do, then I have to have some mechanism to "Fix my lie"
+  - just refetch the entire collection again.
+  - It's fast -- the UI looks good.
+
+"Pessimistic"
+
+- Don't change your local copy AT ALL. Ask the server to do it, if it goes ok, then refetch the data\*
+  - refetch.
+  - ok, I think I can be in sync by delete that row now.
+
+  - outbox - a sort of automated version of this.
+    - keeps us honest - have two buckets. One has our server data, one has our "outgoing" requests.
+      - when you do a mutation (POST/PUT/DELETE), put that in the "outbox" and display a pending operation.
+      - when it completes, take it out of the outbox, show the pending operation as completed, and then update the state, or whatever.
+      - I have code for you that does all of this with NGRX store and interceptors.
+
+The other pattern:
+
+- Eventual Consistency. Change your nouns and verbs.
+
+Instead of saying "this button removes the vehicle from your policy" it says "begin process of removing the vehicle from your policy"
+
+- SSE, Web Sockets

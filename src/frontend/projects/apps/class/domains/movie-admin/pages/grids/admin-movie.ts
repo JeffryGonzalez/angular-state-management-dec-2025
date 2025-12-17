@@ -76,7 +76,9 @@ import { Edit } from './edit';
               <td class=" h-20   items-center justify-items-center w-fit flex flex-row">
                 <div class="flex flex-row gap-2">
                   <button (click)="edit(movie.id)" class="btn btn-xs btn-primary">Edit</button>
-                  <button class="btn btn-xs btn-error">Delete</button>
+                  <button class="btn btn-xs btn-error" (click)="store.deleteMovie(movie.id)">
+                    Delete
+                  </button>
                 </div>
               </td>
             </tr>
