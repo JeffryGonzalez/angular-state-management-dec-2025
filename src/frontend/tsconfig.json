@@ -9,7 +9,8 @@
       "@app-types/*": ["projects/common/types/*"],
       "@app-auth/*": ["projects/common/auth/*"],
       "@app-errors/*": ["projects/common/errors/*"],
-      "@app-state/*": ["projects/common/state/*"]
+      "@app-state/*": ["projects/common/state/*"],
+      "@app-api-clients/*": ["projects/common/api-clients/*"]
     },
 
     "strict": true,

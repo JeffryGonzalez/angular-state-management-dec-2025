@@ -6,7 +6,7 @@ export default defineConfig({
     {
       format: 'prettier',
       lint: 'eslint',
-      path: './projects/apps/class/common/api-clients/movies',
+      path: './projects/common/api-clients/movies',
     },
   ],
   plugins: [

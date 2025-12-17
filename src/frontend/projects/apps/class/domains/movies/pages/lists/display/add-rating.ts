@@ -1,4 +1,9 @@
 import { JsonPipe } from '@angular/common';
+import { AddRatingRequest } from '@app-api-clients/movies/client';
+import { zAddRatingRequest } from '@app-api-clients/movies/zod.gen';
+const createRatingSchema = schema<AddRatingRequest>((path) =>
+  validateStandardSchema(path, zAddRatingRequest),
+);
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import {
   applyWhen,
@@ -8,6 +13,9 @@ import {
   min,
   minLength,
   required,
+  schema,
+  StandardSchemaValidationError,
+  validateStandardSchema,
 } from '@angular/forms/signals';
 import { CloseAllDialogsDirective } from '@ngneat/dialog';
 import { MovieRatings } from '../../../types';
@@ -124,4 +132,5 @@ export class AddRating {
 
     min(schemaPath.rating, 4);
   });
+  //form = form<MovieRatingRequest>(this.#default, createRatingSchema);
 }

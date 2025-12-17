@@ -22,12 +22,14 @@ export const config: SheriffConfig = {
     'projects/common/app-shell/providers': ['type:angular-app-lib'],
     'projects/common/app-shell/features': ['type:angular-feature-lib'],
     'projects/common/app-shell/internal': ['type:angular-app-lib'],
+
     'projects/common/ui': ['type:angular-lib'],
     // Anything in the common directory that is not Angular specific should be `type:common`.
     'projects/common/types': ['type:common'],
     'projects/common/auth': ['type:angular-lib'],
     'projects/common/errors': ['type:angular-lib'],
     'projects/common/state': ['type:angular-lib'],
+    'projects/common/api-clients/<client>': ['api-client:<client>', 'type:generated-api-client'],
   },
   depRules: {
     // Common stuff can use common stuff.
@@ -60,6 +62,11 @@ export const config: SheriffConfig = {
       sameTag,
     ],
     'type:angular-lib-internal': ['type:angular-feature-lib', 'type:angular-app-lib', sameTag],
+
+    'type:generated-api-client': [sameTag],
+    'api-client:movies': ['type:angular-lib', 'type:generated-api-client', sameTag],
+    'api-client:*': ['type:angular-lib', 'type:common', sameTag],
+
     root: ['*'],
   },
 };
