@@ -1,6 +1,15 @@
 import { Component, ChangeDetectionStrategy, input, signal } from '@angular/core';
 import { MovieRatings } from '../../../types';
-import { form, required, maxLength, minLength, Field } from '@angular/forms/signals';
+import {
+  form,
+  required,
+  maxLength,
+  minLength,
+  Field,
+  schema,
+  applyWhen,
+  applyWhenValue,
+} from '@angular/forms/signals';
 import { CloseAllDialogsDirective } from '@ngneat/dialog';
 import { RatingInput } from './rating-input';
 import { JsonPipe } from '@angular/common';
@@ -21,28 +30,44 @@ export type MovieRatingRequest = {
     @if (submitted() === true) {
       <p>Thanks, you rock!</p>
     } @else {
-      <form novalidate (submit)="handleSubmit($event)">
-        <div class="flex flex-col gap-4 h-fit">
-          <fieldset class="fieldset">
-            <legend class="fieldset-legend">Your Rating</legend>
-            <app-movie-rating-input [field]="form.rating"></app-movie-rating-input>
-          </fieldset>
-          <fieldset class="fieldset">
-            <legend class="fieldset-legend">Your Comment</legend>
-            <label class="label" for="comment">Comment:</label>
-            <textarea
-              [field]="form.comment"
-              id="comment"
-              class="textarea validator"
-              rows="8"
-              cols="12"
-              placeholder="Tell us what you thought."
-            ></textarea>
-            <p class="validation-hint">Minimum 10 characters, maximum 500 characters.</p>
-          </fieldset>
-          <button type="submit" class="btn btn-primary w-1/6" closeAllDialogs>Submit Rating</button>
+      <div class="flex flex-row justify-items-center items-stretch gap-8 w-full">
+        <form novalidate (submit)="handleSubmit($event)">
+          <div class="flex flex-col gap-4 h-fit">
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Your Rating</legend>
+              <app-movie-rating-input [field]="form.rating"></app-movie-rating-input>
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Your Comment</legend>
+              <label class="label" for="comment">Comment:</label>
+              <textarea
+                [field]="form.comment"
+                id="comment"
+                class="textarea validator"
+                rows="8"
+                cols="12"
+                placeholder="Tell us what you thought."
+              ></textarea>
+            </fieldset>
+            <button type="submit" class="btn btn-primary w-1/6" closeAllDialogs>
+              Submit Rating
+            </button>
+          </div>
+        </form>
+        <div class="w-1/3 bg-base-300 p-4 rounded-lg">
+          <pre>
+Form Value:
+{{ form().value() | json }}
+
+         
+Error Summary:  
+{{ form().errorSummary() | json }}
+
+
+          </pre
+          >
         </div>
-      </form>
+      </div>
     }
   `,
   styles: ``,
@@ -53,6 +78,7 @@ export class AddRating {
   async handleSubmit(event: SubmitEvent) {
     // todo
     event.preventDefault();
+
     if (this.form().valid()) {
       this.form().value().movie.id = this.movieId();
       this.form().value().movie.version = this.movieVersion();
@@ -80,8 +106,17 @@ export class AddRating {
   });
 
   form = form(this.#default, (schemaPath) => {
+    // when the reating is 2 or below, comment must be at least 20 characters
+    // Justify your negativity!
+    applyWhen(
+      schemaPath.comment,
+      ({ valueOf }) => valueOf(schemaPath.rating) <= 2,
+      (s) => minLength(s, 20),
+    );
+
     required(schemaPath.comment);
     minLength(schemaPath.comment, 10);
+
     maxLength(schemaPath.comment, 500);
     required(schemaPath.rating);
   });
