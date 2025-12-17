@@ -21,7 +21,7 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "ES2023",
+    "target": "es2023",
     "module": "preserve"
   },
   "angularCompilerOptions": {

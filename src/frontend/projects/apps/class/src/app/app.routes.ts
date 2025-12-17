@@ -31,9 +31,11 @@ const baseRoutes: AppRoutes = [
     data: {
       title: 'Movie Admin',
       linkText: 'Movie Admin',
-      iconName: 'solarVideoFrameCut',
+      iconName: 'solarMedalRibbonStar',
       pageTitle: 'Movie Admin Page',
       requiresAuth: true,
+      hideIfUnauthenticated: true,
+      // requiredRoles: ['MovieAdmins'],
       linkDescription: 'Administration of Movies',
     },
   },
