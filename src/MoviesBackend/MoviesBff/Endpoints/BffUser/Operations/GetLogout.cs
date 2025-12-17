@@ -1,0 +1,21 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Http.HttpResults;
+using MoviesBff.Extensions.Yarp;
+
+namespace MoviesBff.Endpoints.BffUser.Operations;
+
+public static class GetLogout
+{
+    public static SignOutHttpResult Handle(string? returnUrl, HttpContext context)
+    {
+        var properties = new AuthenticationProperties
+        {
+            RedirectUri = context.BuildRedirectUrl(returnUrl)
+        };
+
+        return TypedResults.SignOut(properties,
+            [CookieAuthenticationDefaults.AuthenticationScheme, OpenIdConnectDefaults.AuthenticationScheme]);
+    }
+}

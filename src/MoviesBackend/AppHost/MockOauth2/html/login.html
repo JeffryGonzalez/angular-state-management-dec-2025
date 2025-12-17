@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Mock OAuth2 Server Example Sign-in</title>
+
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="row mt-5 justify-content-md-center">
+
+        <div class="col-md-5">
+            <form method="post">
+
+                <h4>Mock OAuth2 Server For Class</h4>
+                <h5>Angular State Management</h5>
+                <p>This is using OIDC/OAuth2 - but it will allow you, for development and testing, to use any users with
+                    any claims.</p>
+                <hr class="divisor">
+                <div class="row">
+                   
+                    <div class="col" >
+                        <div class="d-flex flex-column p-2" id="examples"></div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <input autofocus="on" class="form-control" name="username"
+                                   placeholder="Enter any user/subject"
+                                   type="text">
+                        </div>
+
+                        <div class="form-group">
+                        <textarea class="form-control" name="claims" placeholder="Optional claims JSON value, example:
+{
+  &quot;acr&quot;: &quot;reference&quot;
+}" rows="8"
+                        ></textarea>
+                            <button class="btn btn-primary topBtn" type="submit"><i class="fa fa-sign-in"></i>Sign-in</button>
+                        </div>
+                    </div>
+                </div>
+               
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+    const form = document.querySelector('form');
+    const userNameEntry = form.querySelector('input[name="username"]');
+    const claimsEntry = form.querySelector('textarea[name="claims"]');
+    const examplesElement = document.getElementById('examples');
+    form.addEventListener('submit', function (event) {
+        if (claimsEntry.value) {
+            try {
+                JSON.parse(claimsEntry.value);
+            } catch (e) {
+                event.preventDefault();
+                alert('Claims value is not valid JSON: ' + e.message);
+            }
+        }
+    })
+    const examples = [
+        {
+            description: 'Bob: Employee',
+            data: {
+                username: 'bob',
+                claims: `{}`
+            }
+        },
+        {
+            description: 'Phyllis: Movies Manager',
+            data: {
+                username: 'phyllis',
+                claims: `{
+                  "role": ["MoviesManager"]
+                  }`
+            }
+        }
+    ]
+    examples.forEach(example => {
+        const btnSubmit = document.createElement('button');
+        btnSubmit.className = 'btn btn-primary btn-sm ';
+        btnSubmit.type = "submit";
+        btnSubmit.textContent = example.description;
+        btnSubmit.addEventListener('click', (e) => {
+            userNameEntry.value = example.data.username;
+            claimsEntry.value = JSON.parse(example.data.claims) ? example.data.claims : '';
+        });
+        examplesElement.appendChild(btnSubmit);
+ 
+        const btnPrefill = document.createElement('button');
+        btnPrefill.className = 'btn btn-outline-info btn-sm ms-2 mb-4 ';
+        btnPrefill.type = "submit";
+        btnPrefill.textContent = "Copy >>";
+        btnPrefill.addEventListener('click', (e) => {
+            e.preventDefault();
+            userNameEntry.value = example.data.username;
+            claimsEntry.value = JSON.parse(example.data.claims) ? example.data.claims : '';
+        });
+        examplesElement.appendChild(btnPrefill);
+        
+      
+     
+    })
+</script>
+</body>
+
+</html>

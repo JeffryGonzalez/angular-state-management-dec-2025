@@ -1,0 +1,29 @@
+{
+  "loginPagePath": "/app/resources/software/html/login.html",
+  "interactiveLogin": true,
+  "httpServer": "MockWebServerWrapper",
+  "tokenCallbacks": [
+    {
+      "issuerId": "software",
+      "requestMappings": [
+        {
+          "requestParam": "code",
+          "match": "alice",
+          "claims": {
+            "sub": "alice",
+            "role": [
+              "Manger"
+            ]
+          }
+        },
+        {
+          "requestParam": "code",
+          "match": "bob",
+          "claims": {
+            "sub": "bob"
+          }
+        }
+      ]
+    }
+  ]
+}
