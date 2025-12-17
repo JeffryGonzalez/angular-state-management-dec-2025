@@ -8,6 +8,8 @@ public static class AddRating
 {
     public static async Task<Ok> AddRatingToMovie(AddRatingRequest request, Channel<MovieReviewedChannelRequest> channel, CancellationToken stoppingToken)
     {
+
+        // I'm not verifying the movie exists, I'm not saving this.. sue me.
         await channel.Writer.WriteAsync(new MovieReviewedChannelRequest(request),stoppingToken);
         return TypedResults.Ok();
     }

@@ -9,11 +9,13 @@ import { DetailsPage } from './pages/lists/details';
 import { ListsPage } from './pages/lists/home';
 import { movieStore } from './stores/movie';
 import { ListHttpResourcePage } from './pages/lists/list-http-resource';
+import { RatingsListener } from './stores/ratings-service';
+import { ratingsStore } from './stores/ratings';
 export const moviesRoutes: FeatureRoutes = [
   {
     path: '', // I have no idea what I'm called to the outside world. This is for the app.routes to decide.
     component: Home,
-    providers: [movieStore], // if you provide on a route, it is available to any "child" of this route.
+    providers: [movieStore, RatingsListener, ratingsStore], // if you provide on a route, it is available to any "child" of this route.
     // it is created "lazily" - when it is first used, but never taken ot of memory. It stays there. You MIGHT want that.
     children: [
       {

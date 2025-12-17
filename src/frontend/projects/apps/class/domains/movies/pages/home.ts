@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FeaturePage } from '@app-shell/features/feature-page';
 import { movieStore } from '../stores/movie';
 import { ProseBlock } from '@app-ui/prose-block';
 import { DialogCloseDirective } from '@ngneat/dialog';
+import { RatingsListener } from '../stores/ratings-service';
 
 @Component({
   selector: 'app-movies-pages-home',

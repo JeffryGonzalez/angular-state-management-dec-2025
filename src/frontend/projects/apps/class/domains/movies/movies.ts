@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { RouterOutlet } from '@angular/router';
 import { FeatureShell } from '@app-shell/features/shell';
+import { ratingsStore } from './stores/ratings';
 
 @Component({
   selector: 'app-movies',
@@ -11,7 +12,6 @@ import { FeatureShell } from '@app-shell/features/shell';
   template: `
     <ui-feature-shell title="Movies Home">
       <div class="">
-       
         <router-outlet></router-outlet>
       </div>
     </ui-feature-shell>
@@ -19,5 +19,5 @@ import { FeatureShell } from '@app-shell/features/shell';
   styles: ``,
 })
 export class Home {
- 
+  #ratingsListener = inject(ratingsStore);
 }

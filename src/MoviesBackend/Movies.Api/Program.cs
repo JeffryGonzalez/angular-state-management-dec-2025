@@ -21,7 +21,7 @@ builder.Services.AddValidation();
 var channel = Channel.CreateUnbounded<MovieReviewedChannelRequest>();
  builder.Services.AddSingleton(channel);
 builder.Services.AddSingleton<RatingService>();
-builder.Services.AddHostedService<RatingsWorker>();
+builder.Services.AddHostedService<RatingsWorker>(); /// a little background thing that is always running in my api.
 
 builder.AddNpgsqlDataSource("movies");
 
