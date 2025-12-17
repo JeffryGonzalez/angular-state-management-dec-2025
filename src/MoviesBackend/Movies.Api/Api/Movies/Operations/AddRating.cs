@@ -19,4 +19,4 @@ public record AddRatingRequest
     public int Rating { get; set; }
     
 }
-public record MovieRatingInfo(string MovieId, int Version);
+public record MovieRatingInfo(string Id, int Version);

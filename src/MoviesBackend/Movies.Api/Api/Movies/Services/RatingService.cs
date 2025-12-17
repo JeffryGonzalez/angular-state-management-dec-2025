@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Channels;
 using Movies.Api.Api.Movies.Models;
 using Movies.Api.Api.Movies.Operations;
 
@@ -56,20 +55,5 @@ public class RatingService : INotifyPropertyChanged
     public void Set(AddRatingRequest request)
     {
         Current = request;
-    }
-}
-
-public record MovieReviewedChannelRequest(AddRatingRequest Rating);
-public class RatingsWorker(Channel<MovieReviewedChannelRequest> channel, ILogger<RatingsWorker> logger, RatingService service) : BackgroundService
-{
-    
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        logger.LogInformation("Starting ratings worker...");
-        while (await channel.Reader.WaitToReadAsync(stoppingToken))
-        {
-            var request = await channel.Reader.ReadAsync(stoppingToken);
-            service.Set(request.Rating);
-        }
     }
 }
