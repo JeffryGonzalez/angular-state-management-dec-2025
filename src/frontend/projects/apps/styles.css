@@ -4,5 +4,9 @@
 @plugin "@tailwindcss/typography";
 
 @plugin "daisyui" {
-  themes: dracula;
+  themes:
+    nord --default,
+    black --prefersdark;
 }
+
+@custom-variant dark (&:where([data-theme=black], [data-theme=black] *));

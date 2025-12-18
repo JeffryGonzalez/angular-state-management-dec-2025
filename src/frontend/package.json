@@ -80,8 +80,7 @@
   },
   "msw": {
     "workerDirectory": [
-      "projects/apps/class/src",
-      "projects/apps/software-center/src"
+      "projects/apps/class/src"
     ]
   }
 }

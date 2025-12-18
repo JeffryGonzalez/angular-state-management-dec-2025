@@ -10,8 +10,8 @@ import { NavLink } from './internal/nav-link';
 import { profileStore } from '@ht/auth/profile/profile';
 import { NgIcon } from '@ng-icons/core';
 import { routingStore } from './providers/routing-store';
-import { Store } from '@ngrx/store';
-import { prefsStore } from '../../prefs/prefs';
+
+import { prefsStore } from '../../../state/stores/prefs';
 
 @Component({
   selector: 'ui-application-shell',

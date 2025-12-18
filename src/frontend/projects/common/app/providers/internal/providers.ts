@@ -5,7 +5,7 @@ import { HotkeysService } from '@ngneat/hotkeys';
 import { routingStore } from '../../app-shell/application/providers/routing-store';
 
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { prefsStore } from 'projects/common/app/prefs/prefs';
+import { prefsStore } from '@ht/state/stores/prefs';
 import { navigationIcons } from '@ht/types/routing/icons';
 
 export function provideAppShell(): EnvironmentProviders {

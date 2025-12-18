@@ -22,7 +22,7 @@ export const config: SheriffConfig = {
     'projects/common/app/app-shell': ['type:angular-app-lib'],
     'projects/common/app/providers': ['type:angular-app-lib'],
     'projects/common/app/features': ['type:angular-feature-lib'],
-    'projects/common/app/events': ['type:angular-lib'],
+
     'projects/common/app/prefs': ['type:angular-lib'],
 
     'projects/common/ui': ['type:angular-lib'],
@@ -56,10 +56,6 @@ export const config: SheriffConfig = {
       sameTag,
     ],
 
-    // 'api:*': ['type:angular-app-domain', sameTag],
-    // 'feature:*': ['type:angular-lib', 'type:common', 'type:angular-feature-lib', sameTag],
-    // 'feature:movie-admin': ['api:movies', 'type:angular-app-lib', sameTag],
-    // 'feature:movies': ['api:movies', 'type:angular-app-lib', sameTag],
     root: ['*'],
     // // Angular apps can use Angular libs and common stuff.
     // 'type:angular-app': ['type:angular-lib', 'type:common', 'type:angular-app-lib', sameTag],

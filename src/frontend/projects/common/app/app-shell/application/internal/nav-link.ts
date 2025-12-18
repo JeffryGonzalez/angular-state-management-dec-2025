@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgIcon } from '@ng-icons/core';
 import { Authentication } from '@ht/auth/authentication';
 import type { AppRoute } from '@ht/types/routing/app-routing';
-import { prefsStore } from 'projects/common/app/prefs/prefs';
+import { prefsStore } from '@ht/state/stores/prefs';
 
 @Component({
   selector: 'app-ui-internal-link',

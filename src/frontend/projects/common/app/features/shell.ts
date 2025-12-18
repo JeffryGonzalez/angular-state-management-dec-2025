@@ -18,12 +18,11 @@ import { Flower } from './internal/flower';
 import { SectionNav } from './internal/section-nav';
 import { sectionStore } from './internal/store';
 import { ThemePicker } from './internal/theme-picker';
-import { themeStore } from './internal/theme-store';
 
 import { SearchModal } from './internal/search-modal';
 import { HotkeysService } from '@ngneat/hotkeys';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { prefsStore } from '../prefs/prefs';
+import { prefsStore } from '../../state/stores/prefs';
 
 type KbdKeysSpecificMap = {
   meta: string;
@@ -38,10 +37,10 @@ type KbdKeysSpecificMap = {
   host: {
     class: 'drawer-content',
   },
-  viewProviders: [sectionStore, themeStore],
+  viewProviders: [sectionStore],
   template: `
     <!-- Navbar -->
-    <div class="flex flex-col w-full bg-base-100  ">
+    <div class="flex flex-col bg-base-100  ">
       <div class="flex flex-row gap-0   bg-base-300  rounded-none h-1/12">
         <label
           for="drawer-1"
@@ -67,7 +66,9 @@ type KbdKeysSpecificMap = {
 
         <app-section-nav></app-section-nav>
 
-        <div class="ml-auto flex flex-row gap-4">
+        <div class="ml-auto flex flex-row gap-4 align-middle items-center pr-4">
+          <app-theme-picker></app-theme-picker>
+
           <div class="">
             @if (authentication.isLoggedIn) {
               <button

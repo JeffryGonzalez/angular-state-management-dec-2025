@@ -6,7 +6,6 @@
     "paths": {
       "@ht/app/application/*": ["projects/common/app/app-shell/*"],
       "@ht/app/providers/*": ["projects/common/app/providers/*"],
-      "@ht/app/events/*": ["projects/common/app/events/*"],
       "@ht/features/*": ["projects/common/app/features/*"],
       "@ht/ui/*": ["projects/common/ui/*"],
       "@ht/types/*": ["projects/common/types/*"],
