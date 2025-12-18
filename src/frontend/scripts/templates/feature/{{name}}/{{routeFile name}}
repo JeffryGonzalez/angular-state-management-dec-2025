@@ -1,7 +1,7 @@
 import { Home } from './{{ name }}';
 import { HomePage } from './pages/home';
 
-import { FeatureRoutes } from '@app-types/routing/feature-routing';
+import { FeatureRoutes } from '@ht/types/routing/feature-routing';
 export const {{name}}Routes: FeatureRoutes = [
   {
     path: '',

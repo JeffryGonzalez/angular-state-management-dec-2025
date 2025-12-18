@@ -8,7 +8,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { Authentication } from '@app-auth/authentication';
+import { Authentication } from '@ht/auth/authentication';
 import { NgIcon } from '@ng-icons/core';
 
 import { RouterLink } from '@angular/router';
@@ -19,10 +19,11 @@ import { SectionNav } from './internal/section-nav';
 import { sectionStore } from './internal/store';
 import { ThemePicker } from './internal/theme-picker';
 import { themeStore } from './internal/theme-store';
-import { prefsStore } from '../../state/stores/preferences/prefs';
+
 import { SearchModal } from './internal/search-modal';
 import { HotkeysService } from '@ngneat/hotkeys';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { prefsStore } from '../prefs/prefs';
 
 type KbdKeysSpecificMap = {
   meta: string;
@@ -67,9 +68,6 @@ type KbdKeysSpecificMap = {
         <app-section-nav></app-section-nav>
 
         <div class="ml-auto flex flex-row gap-4">
-          <div>
-            <app-theme-picker />
-          </div>
           <div class="">
             @if (authentication.isLoggedIn) {
               <button
@@ -102,7 +100,6 @@ type KbdKeysSpecificMap = {
   styles: ``,
 })
 export class FeatureShell implements OnInit {
- 
   protected prefsStore = inject(prefsStore);
   #hotkeysService = inject(HotkeysService);
   title = input.required<string>();

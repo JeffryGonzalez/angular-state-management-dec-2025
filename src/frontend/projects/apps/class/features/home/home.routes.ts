@@ -1,4 +1,3 @@
-import { FeatureRoutes } from '@app-types/routing/feature-routing';
 import { Home } from './home';
 import { HomePage } from './pages/home';
 import { ClassesPage } from './pages/classes';
@@ -6,6 +5,7 @@ import { ThisClassPage } from './pages/this-class';
 import { TimerPage } from './pages/timer';
 import { IntroPage } from './pages/intro';
 import { PicsPage } from './pages/pics';
+import { FeatureRoutes } from '@ht/types/routing/feature-routing';
 
 export const homeRoutes: FeatureRoutes = [
   {

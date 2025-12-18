@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { RouterOutlet } from '@angular/router';
-import { FeatureShell } from '@app-shell/features/shell';
+import { FeatureShell } from '@ht/features/shell';
 import { ratingsStore } from './stores/ratings';
 
 @Component({

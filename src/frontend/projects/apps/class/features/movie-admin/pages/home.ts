@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FeaturePage } from '@app-shell/features/feature-page';
+
 import { movieAdminStore } from '../stores/movie-big';
 import { AdminMovieGrid } from './grids/admin-movie';
+import { FeaturePage } from '@ht/features/feature-page';
 
 @Component({
   selector: 'app-movie-admin-pages-home',

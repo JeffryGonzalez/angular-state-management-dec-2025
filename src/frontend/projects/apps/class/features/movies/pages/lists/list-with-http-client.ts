@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { FeaturePage } from '@app-shell/features/feature-page';
+import { FeaturePage } from '@ht/features/feature-page';
 import { ApiMovie } from '../../types';
 import { map } from 'rxjs';
 import { MoviesList } from './display/list';

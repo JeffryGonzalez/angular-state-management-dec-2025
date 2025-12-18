@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FeaturePage } from '@app-shell/features/feature-page';
-import { ProseBlock } from '@app-ui/prose-block';
+import { FeaturePage } from '@ht/features/feature-page';
+import { ProseBlock } from '@ht/ui/prose-block';
 
 @Component({
   selector: 'app-home-pages-classes',

@@ -10,7 +10,7 @@ Right now these are defined in the root `tsconfig.json` as:
     "paths": {
       "@app-providers/*": ["projects/common/providers/*"],
       "@app-ui/*": ["projects/common/ui/*"],
-      "@app-types/*": ["projects/common/types/*"],
+      "@ht/types/*": ["projects/common/types/*"],
       "@app-auth/*": ["projects/common/auth/*"],
       "@app-errors/*": ["projects/common/errors/*"]
     },

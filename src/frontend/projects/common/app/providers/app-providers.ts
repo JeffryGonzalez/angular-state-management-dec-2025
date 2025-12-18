@@ -1,6 +1,6 @@
 import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
-import { provideAppAuth } from '@app-auth/providers';
-import { provideAppErrors } from '@app-errors/providers';
+import { provideAppAuth } from '@ht/auth/providers';
+import { provideAppErrors } from '@ht/errors/providers';
 
 import { provideNgrxStoreForApp } from './internal/ngrx-store-providers';
 import { provideAppShell } from './internal/providers';

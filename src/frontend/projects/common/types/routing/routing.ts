@@ -1,4 +1,4 @@
-import { IconName } from '@app-types/routing/icons';
+import { IconName } from './icons';
 
 export type TypedAppRouteData = {
   pageTitle: string;

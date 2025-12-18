@@ -1,9 +1,10 @@
 import { Component, ChangeDetectionStrategy, input, inject, computed } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgIcon } from '@ng-icons/core';
-import { Authentication } from '@app-auth/authentication';
-import type { AppRoute } from '@app-types/routing/app-routing';
-import { prefsStore } from '@app-state/stores/preferences/prefs';
+import { Authentication } from '@ht/auth/authentication';
+import type { AppRoute } from '@ht/types/routing/app-routing';
+import { prefsStore } from 'projects/common/app/prefs/prefs';
+
 @Component({
   selector: 'app-ui-internal-link',
   changeDetection: ChangeDetectionStrategy.OnPush,

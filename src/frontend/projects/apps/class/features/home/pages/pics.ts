@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FeaturePage } from '@app-shell/features/feature-page';
+import { FeaturePage } from '@ht/features/feature-page';
 
 @Component({
   selector: 'app-home-pages-pics',

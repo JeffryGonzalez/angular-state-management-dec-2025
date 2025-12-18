@@ -2,7 +2,7 @@ import { Home } from './movies';
 
 import { HomePage } from './pages/home';
 
-import { FeatureRoutes } from '@app-types/routing/feature-routing';
+import { FeatureRoutes } from '@ht/types/routing/feature-routing';
 
 import { ListWithHttpClientPage } from './pages/lists/list-with-http-client';
 import { DetailsPage } from './pages/lists/details';

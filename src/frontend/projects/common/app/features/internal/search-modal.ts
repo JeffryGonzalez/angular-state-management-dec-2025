@@ -1,6 +1,6 @@
 import { Component, ElementRef, inject, output, signal, viewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppRoutes } from '@app-types/routing/app-routing';
+import { AppRoutes } from '@ht/types/routing/app-routing';
 
 @Component({
   selector: 'search-modal',

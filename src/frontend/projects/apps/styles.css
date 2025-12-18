@@ -3,15 +3,6 @@
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 
-@plugin "../common/ui/themes/frappe.ts";
-@plugin "../common/ui/themes/latte.ts";
-@plugin "../common/ui/themes/macchioto.ts";
-@plugin "../common/ui/themes/mocha.ts";
-
 @plugin "daisyui" {
-  themes:
-    latte --color-scheme light,
-    frappe --color-scheme dark,
-    mocha --color-scheme dark,
-    macchiato --color-scheme dark;
+  themes: dracula;
 }

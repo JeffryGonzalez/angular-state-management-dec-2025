@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FeaturePage } from '@app-shell/features/feature-page';
-import { MarkdownBlockComponent } from '@app-ui/markdown/block';
+import { FeaturePage } from '@ht/features/feature-page';
+import { MarkdownBlockComponent } from '@ht/ui/markdown/block';
 
 @Component({
   selector: 'app-home-pages-intro',

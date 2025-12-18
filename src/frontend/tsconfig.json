@@ -4,13 +4,15 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@app-shell/*": ["projects/common/app-shell/*"],
-      "@app-ui/*": ["projects/common/ui/*"],
-      "@app-types/*": ["projects/common/types/*"],
-      "@app-auth/*": ["projects/common/auth/*"],
-      "@app-errors/*": ["projects/common/errors/*"],
-      "@app-state/*": ["projects/common/state/*"],
-      "@class-common/*": ["projects/apps/class/common/*"]
+      "@ht/app/application/*": ["projects/common/app/app-shell/*"],
+      "@ht/app/providers/*": ["projects/common/app/providers/*"],
+      "@ht/app/events/*": ["projects/common/app/events/*"],
+      "@ht/features/*": ["projects/common/app/features/*"],
+      "@ht/ui/*": ["projects/common/ui/*"],
+      "@ht/types/*": ["projects/common/types/*"],
+      "@ht/auth/*": ["projects/common/auth/*"],
+      "@ht/errors/*": ["projects/common/errors/*"],
+      "@ht/state/*": ["projects/common/state/*"]
     },
 
     "strict": true,
@@ -33,9 +35,6 @@
   },
   "files": [],
   "references": [
-    {
-      "path": "./projects/apps/software-center/tsconfig.app.dev.json"
-    },
     {
       "path": "./projects/apps/class/tsconfig.app.dev.json"
     }

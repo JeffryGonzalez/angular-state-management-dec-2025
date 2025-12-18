@@ -1,5 +1,5 @@
-import { AppRoutes } from '@app-types/routing/app-routing';
-import { withDevTimeRoutes } from '@app-types/routing/dev-routes';
+import { AppRoutes } from '@ht/types/routing/app-routing';
+import { withDevTimeRoutes } from '@ht/types/routing/dev-routes';
 
 const baseRoutes: AppRoutes = [
   {

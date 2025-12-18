@@ -6,7 +6,7 @@ import {
   type RouterStateSnapshot,
 } from '@angular/router';
 import { map } from 'rxjs';
-import { filterNullish } from '@app-types/rxjs/filter-nullish';
+import { filterNullish } from '@ht/types/rxjs/filter-nullish';
 import { Authentication } from './authentication';
 
 /**

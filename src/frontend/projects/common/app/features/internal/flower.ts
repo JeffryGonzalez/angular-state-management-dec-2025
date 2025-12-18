@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { DialogService } from '@ngneat/dialog';
-import { Authentication } from '@app-auth/authentication';
+import { Authentication } from '@ht/auth/authentication';
 import { SearchModal } from './search-modal';
 
 type KbdKeysSpecificMap = {

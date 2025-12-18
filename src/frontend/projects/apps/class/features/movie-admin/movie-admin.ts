@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { RouterOutlet } from '@angular/router';
-import { FeatureShell } from '@app-shell/features/shell';
+import { FeatureShell } from '@ht/features/shell';
 @Component({
   selector: 'app-movie-admin',
   changeDetection: ChangeDetectionStrategy.OnPush,

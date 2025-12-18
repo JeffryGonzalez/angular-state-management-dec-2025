@@ -1,7 +1,7 @@
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { HttpClient } from '@angular/common/http';
 import { computed, effect, inject } from '@angular/core';
-import { Authentication } from '@app-auth/authentication';
+import { Authentication } from '@ht/auth/authentication';
 import { mapResponse } from '@ngrx/operators';
 import { signalStore, withComputed, withHooks, withProps, withState } from '@ngrx/signals';
 import { Events, injectDispatch, on, withEffects, withReducer } from '@ngrx/signals/events';

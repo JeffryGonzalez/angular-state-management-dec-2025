@@ -1,8 +1,9 @@
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { computed, inject } from '@angular/core';
 import { Routes } from '@angular/router';
-import { Authentication } from '@app-auth/authentication';
-import { AppRoute } from '@app-types/routing/app-routing';
+import { Authentication } from '@ht/auth/authentication';
+import { AppRoute } from '@ht/types/routing/app-routing';
+
 import {
   patchState,
   signalStore,

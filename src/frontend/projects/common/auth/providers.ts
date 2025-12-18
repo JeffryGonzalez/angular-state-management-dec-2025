@@ -2,7 +2,7 @@ import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
 import { Authentication } from './authentication';
 import { provideHttpClient, withXsrfConfiguration, withInterceptors } from '@angular/common/http';
 import { secureApiInterceptor } from './secure-api-interceptor';
-import * as authConstants from '@app-auth/constants';
+import * as authConstants from '@ht/auth/constants';
 import { profileStore } from './profile/profile';
 export function provideAppAuth(): EnvironmentProviders {
   return makeEnvironmentProviders([

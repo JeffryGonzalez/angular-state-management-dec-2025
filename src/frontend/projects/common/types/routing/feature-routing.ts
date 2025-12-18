@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { TypedAppRouteData } from '@app-types/routing/routing';
+import { TypedAppRouteData } from './routing';
 
 type TypedFeatureData = Omit<TypedAppRouteData, 'linkDescription' | 'iconName' | 'pageTitle'>;
 

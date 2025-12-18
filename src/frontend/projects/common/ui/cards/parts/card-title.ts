@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { Sizes } from '@app-ui/internal/types';
+import { Sizes } from '@ht/ui/internal/types';
 
 @Component({
   selector: 'card-title',
