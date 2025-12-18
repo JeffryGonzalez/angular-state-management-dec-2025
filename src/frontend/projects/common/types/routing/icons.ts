@@ -26,9 +26,11 @@ import {
   solarCardSearch,
   solarVideoFrameCut,
   solarMedalRibbonStar,
+  solarHamburgerMenu,
 } from '@ng-icons/solar-icons/outline';
 
 export const navigationIcons = {
+  solarHamburgerMenu,
   solarMedalRibbonStar,
   solarVideoFrameCut,
   solarCardSearch,

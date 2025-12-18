@@ -9,7 +9,7 @@ import { prefsStore } from '@ht/state/stores/prefs';
     <div class="flex items-center justify-center">
       <button (click)="prefs.toggleTheme()" class="pointer btn">
         <!-- this hidden checkbox controls the state -->
-        @if (prefs.theme() === 'nord') {
+        @if (prefs.theme() === 'hypertheory') {
           <!-- sun icon -->
           <svg
             class="swap-off h-4 w-4 fill-current"

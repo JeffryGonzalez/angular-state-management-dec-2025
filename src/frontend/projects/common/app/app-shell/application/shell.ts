@@ -19,28 +19,25 @@ import { prefsStore } from '../../../state/stores/prefs';
   viewProviders: [prefsStore],
   imports: [RouterOutlet, NavLink, NgIcon],
   template: `
-    <div class="drawer lg:drawer-open  bg-base">
+    <div class="drawer lg:drawer-open">
       <input id="drawer-1" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content ">
-        <label for="drawer-1" class="btn drawer-button inline-block lg:hidden">
-          <ng-icon name="solarSettings"
-        /></label>
-        <div class="flex flex-col justify-start  align-top   ">
-          <router-outlet />
-        </div>
+      <div class="drawer-content">
+        <router-outlet />
       </div>
-      <div class="drawer-side is-drawer-close:overflow-visible w-full">
+      <div class="drawer-side is-drawer-close:overflow-visible  ">
         <label for="drawer-1" aria-label="close sidebar" class="drawer-overlay"></label>
-        <div class="h-1/12 w-full bg-base-300 "></div>
-        <div class="flex min-h-full flex-col items-center bg-base-300 ">
+
+        <div class="flex min-h-full flex-col place-items-start justify-evenly  p-2  ">
+          <img src="assets/h-labs.png" alt="Hypertheory Logo" class="h-20 object-center" />
+
           <!-- Sidebar content here -->
           @let routes = routingStore.routesToUse();
 
-          <ul class="menu w-full">
+          <ul class="w-full grow pt-2 ">
             <!-- List item -->
             @for (route of routes; track $index) {
               @if (!route.data.hide) {
-                <li>
+                <li class="bg-base-100 mb-2">
                   <app-ui-internal-link [routeToDisplay]="route" [useExact]="route.path === ''" />
                 </li>
               }

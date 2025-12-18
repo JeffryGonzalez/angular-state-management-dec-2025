@@ -3,10 +3,41 @@
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 
-@plugin "daisyui" {
-  themes:
-    nord --default,
-    black --prefersdark;
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: 'hypertheory';
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: oklch(0.2895 0.0464 251.53);
+  --color-base-200: oklch(0.3495 0.0464 251.53);
+  --color-base-300: oklch(0.4095 0.0464 251.53);
+
+  --color-base-content: oklch(0.6987 0.0019 247.85);
+  --color-primary: oklch(0.6466 0.1185 76.08);
+
+  --color-secondary: oklch(0.7957 0.1191 107.75);
+  --color-secondary-content: oklch(0.6987 0.0019 247.85);
+  --color-accent: oklch(0.6466 0.1185 76.08);
+  --color-accent-content: oklch(0.6987 0.0019 247.85);
+
+  /* border radius */
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* border size */
+  --border: 0px;
+
+  /* effects */
+  --depth: 1;
+  --noise: 30%;
 }
 
 @custom-variant dark (&:where([data-theme=black], [data-theme=black] *));

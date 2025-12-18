@@ -24,14 +24,11 @@ import { prefsStore } from '@ht/state/stores/prefs';
       [class.border-neutral/50]="!rla.isActive"
       [routerLinkActiveOptions]="{ exact: useExact() }"
     >
-      <span class="flex flex-row gap-4 items-start p-2">
-        <div
-          class="flex flex-row gap-2 items-center justify-start w-full"
-          [attr.data-tip]="route.shortToolTip"
-        >
-          <ng-icon [name]="route.data.iconName" size="24px" class="w-fit"></ng-icon>
+      <span class="flex flex-row  p-2">
+        <div class="flex flex-row gap-4 items-center   " [attr.data-tip]="route.shortToolTip">
+          <ng-icon [name]="route.data.iconName" size="24px" class=""></ng-icon>
           @if (prefs.sidebarCollapsed() === false) {
-            <div class=" flex flex-col pl-2">
+            <div class=" flex flex-col">
               <span class="">
                 {{ route.data.linkText }}
                 @if (route.data.requiresAuth) {

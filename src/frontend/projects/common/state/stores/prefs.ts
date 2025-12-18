@@ -19,19 +19,15 @@ export const prefsStore = signalStore(
   withDevtools('prefs-store'),
   withState<UserPrefs>({
     sidebarCollapsed: false,
-    theme: 'nord',
+    theme: 'hypertheory',
   }),
 
   withMethods((store) => {
     return {
       toggleSideBar: () => patchState(store, { sidebarCollapsed: !store.sidebarCollapsed() }),
-      toggleTheme: () => patchState(store, { theme: store.theme() === 'nord' ? 'black' : 'nord' }),
+      toggleTheme: () =>
+        patchState(store, { theme: store.theme() === 'nord' ? 'nord' : 'hypertheory' }),
       _setTheme: (theme: string) => patchState(store, { theme }),
-    };
-  }),
-  withComputed((store) => {
-    return {
-      nextTheme: () => (store.theme() === 'black' ? 'nord' : 'black'),
     };
   }),
 

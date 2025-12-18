@@ -1,20 +1,21 @@
 @if (hasEnoughToShowThis()) {
   @let folders = store.getFolders();
   <!-- Always show the root link -->
-  <ul class="flex flex-row flex-wrap">
-    <li class="flex flex-row flex-wrap">
-      @for (folder of folders; track $index) {
-        @if (folder.name !== 'Home' && folder.data.hide !== true) {
-          <ui-folder-display
-            [selectedFolder]="selectedFolder()"
-            [folder]="folder"
-            (clicker)="setSelectedFolder($event)"
-            [text]="folder.data.linkText"
-            [path]="folder.path"
-          ></ui-folder-display>
-        }
-        @for (child of folder.documents; track $index) {
-          @if (child.data.hide !== true) {
+
+  <div class="flex flex-row bg-base-200 justify-stretch items-center gap-2">
+    @for (folder of folders; track $index) {
+      @if (folder.name !== 'Home' && folder.data.hide !== true) {
+        <ui-folder-display
+          [selectedFolder]="selectedFolder()"
+          [folder]="folder"
+          (clicker)="setSelectedFolder($event)"
+          [text]="folder.data.linkText"
+          [path]="folder.path"
+        ></ui-folder-display>
+      }
+      @for (child of folder.documents; track $index) {
+        @if (child.data.hide !== true) {
+          <div class="">
             <ui-document-display
               [selected]="selectedDocument() == child.name"
               [child]="child"
@@ -24,9 +25,27 @@
               (click)="selectedDocument.set(child.name)"
               [text]="child.data.linkText"
             ></ui-document-display>
-          }
+          </div>
         }
       }
-    </li>
-  </ul>
+    }
+    <div class="flex flex-row ml-0">
+      <app-theme-picker></app-theme-picker>
+      @if (authentication.isLoggedIn) {
+        <button
+          (click)="authentication.logout('/')"
+          class="btn rounded-none bg-transparent border-0 border-t-4 border-t-success"
+        >
+          <ng-icon name="solarLogout3" size="16px" title="Log Out"></ng-icon>
+        </button>
+      } @else {
+        <button
+          (click)="authentication.login('/')"
+          class="btn rounded-none bg-transparent border-0 border-t-4 border-t-warning"
+        >
+          <ng-icon name="solarLogin" size="16px" title="Log In"></ng-icon>
+        </button>
+      }
+    </div>
+  </div>
 }

@@ -40,11 +40,16 @@ type KbdKeysSpecificMap = {
   viewProviders: [sectionStore],
   template: `
     <!-- Navbar -->
-    <div class="flex flex-col bg-base-100  ">
-      <div class="flex flex-row gap-0   bg-base-300  rounded-none h-1/12">
+
+    <div class="flex flex-row gap-0 rounded-none ">
+      <label for="drawer-1" class="btn drawer-button lg:hidden">
+        <ng-icon name="solarHamburgerMenu"
+      /></label>
+
+      <div class="hidden lg:inline">
         <label
           for="drawer-1"
-          class="btn btn-square rounded-none border-none bg-transparent border-0"
+          class="btn btn-square sm:hidden rounded-none border-none  border-0"
           (click)="prefsStore.toggleSideBar()"
           for="sidebar-drawer"
           aria-label="open sidebar"
@@ -57,44 +62,18 @@ type KbdKeysSpecificMap = {
             <ng-icon class="" name="solarMirrorRight" size="18px"></ng-icon>
           }
         </label>
-        <a
-          class="btn bg-transparent rounded-none text-md border-0    border-t-4 text-accent border-t-blue-500 uppercase font-black "
-          routerLink="./"
-        >
-          {{ title() }}
-        </a>
-
-        <app-section-nav></app-section-nav>
-
-        <div class="ml-auto flex flex-row gap-4 align-middle items-center pr-4">
-          <app-theme-picker></app-theme-picker>
-
-          <div class="">
-            @if (authentication.isLoggedIn) {
-              <button
-                (click)="authentication.logout('/')"
-                class="btn rounded-none bg-transparent border-0 border-t-4 border-t-success"
-              >
-                <ng-icon name="solarLogout3" size="16px" title="Log Out"></ng-icon>
-              </button>
-            } @else {
-              <button
-                (click)="authentication.login('/')"
-                class="btn rounded-none bg-transparent border-0 border-t-4 border-t-warning"
-              >
-                <ng-icon name="solarLogin" size="16px" title="Log In"></ng-icon>
-              </button>
-            }
-          </div>
-        </div>
       </div>
+      <div class="w-full">
+        <app-section-nav [title]="title()"></app-section-nav>
 
-      <div class="justify-items-start place-items-start">
-        <div class="container  p-4">
-          <ng-content></ng-content>
-        </div>
+        <div class=""></div>
       </div>
     </div>
+
+    <div class=" bg-base-200   ">
+      <ng-content></ng-content>
+    </div>
+
     <app-internal-ui-flower></app-internal-ui-flower>
     <search-modal #searchModal />
   `,

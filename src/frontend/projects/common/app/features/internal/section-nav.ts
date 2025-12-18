@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
@@ -7,30 +7,21 @@ import { FeatureChildRoute } from '../../../types/routing/feature-routing';
 import { DocumentDisplay } from './document-display';
 import { FolderDisplay } from './folder-display';
 import { sectionStore } from './store';
+import { ThemePicker } from './theme-picker';
+import { Authentication } from '@ht/auth/authentication';
+import { NgIcon } from '@ng-icons/core';
 
 @Component({
   selector: 'app-section-nav',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FolderDisplay, DocumentDisplay],
+  imports: [FolderDisplay, DocumentDisplay, ThemePicker, NgIcon],
   templateUrl: './section-nav.html',
-  styles: `
-    :host {
-      .selected-folder {
-        animation: pulse;
-        animation-duration: 1s;
-        animation-delay: 1s;
-      }
-      .deselected-folder {
-        opacity: 0.6;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-    }
-  `,
+  styles: ``,
 }) //
 export class SectionNav {
   selectedFolder = signal('Home');
+  title = input.required<string>();
+  authentication = inject(Authentication);
 
   selectedDocument = signal('');
 

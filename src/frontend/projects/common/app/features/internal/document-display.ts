@@ -13,22 +13,15 @@ import { LinkDocument } from './store';
       #rla="routerLinkActive"
       [routerLink]="child().path"
       (click)="clicker.emit(child.name)"
-      routerLinkActive="border-t-4 border-t-blue-500"
-      [class.selected-document]="selected()"
-      [class.deselected-document]="!selected()"
-      class="btn py-2 rounded-none bg-transparent   "
+      routerLinkActive="border-t-4 border-t-accent"
+      class="pt-2"
     >
-      <ng-icon class="mr-2" name="solarDocument"></ng-icon>
+      <ng-icon class="" name="solarDocument"></ng-icon>
 
       {{ text() }}
     </a>
   }`,
-  styles: `
-    :host {
-      .selected-document {
-      }
-    }
-  `,
+  styles: ``,
 })
 export class DocumentDisplay {
   selected = input.required<boolean>();
