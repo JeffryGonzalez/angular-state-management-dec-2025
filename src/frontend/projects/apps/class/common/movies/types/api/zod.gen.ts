@@ -2,46 +2,58 @@
 
 import { z } from 'zod';
 
-export const zCastMember = z.object({
+export const castMemberSchema = z.object({
   name: z.string().min(1).max(50),
   role: z.string().min(1).max(50),
 });
 
-export const zMovieGenre = z.enum(['Comedy', 'Action', 'Drama', 'Horror', 'SciFi']);
+export type CastMemberModel = z.infer<typeof castMemberSchema>;
 
-export const zMovieCreateRequest = z.object({
+export const movieGenreSchema = z.enum(['Comedy', 'Action', 'Drama', 'Horror', 'SciFi']);
+
+export type MovieGenreModel = z.infer<typeof movieGenreSchema>;
+
+export const movieCreateRequestSchema = z.object({
   title: z.string().min(1).max(100),
   director: z.string().min(1).max(100),
   releaseDate: z.union([z.int(), z.string().regex(/^-?(?:0|[1-9]\d*)$/)]),
-  genre: zMovieGenre,
+  genre: movieGenreSchema,
   ratings: z.union([z.int(), z.string().regex(/^-?(?:0|[1-9]\d*)$/)]),
-  cast: z.optional(z.array(zCastMember)),
+  cast: z.optional(z.array(castMemberSchema)),
   duration: z.union([z.int().gte(1).lte(500), z.string().regex(/^-?(?:0|[1-9]\d*)$/)]),
 });
 
-export const zMovieDetailsResponse = z.object({
+export type MovieCreateRequestModel = z.infer<typeof movieCreateRequestSchema>;
+
+export const movieDetailsResponseSchema = z.object({
   id: z.uuid(),
   title: z.string().min(1).max(100),
   director: z.string().min(1).max(100),
   releaseDate: z.union([z.int(), z.string().regex(/^-?(?:0|[1-9]\d*)$/)]),
-  genre: zMovieGenre,
+  genre: movieGenreSchema,
   ratings: z.union([z.int(), z.string().regex(/^-?(?:0|[1-9]\d*)$/)]),
-  cast: z.optional(z.array(zCastMember)),
+  cast: z.optional(z.array(castMemberSchema)),
   duration: z.union([z.int().gte(1).lte(500), z.string().regex(/^-?(?:0|[1-9]\d*)$/)]),
 });
 
-export const zMovieRatingInfo = z.object({
+export type MovieDetailsResponseModel = z.infer<typeof movieDetailsResponseSchema>;
+
+export const movieRatingInfoSchema = z.object({
   id: z.string(),
   version: z.union([z.int(), z.string().regex(/^-?(?:0|[1-9]\d*)$/)]),
 });
 
-export const zAddRatingRequest = z.object({
-  movie: zMovieRatingInfo,
+export type MovieRatingInfoModel = z.infer<typeof movieRatingInfoSchema>;
+
+export const addRatingRequestSchema = z.object({
+  movie: movieRatingInfoSchema,
   rating: z.optional(z.union([z.int().gte(4).lte(5), z.string().regex(/^-?(?:0|[1-9]\d*)$/)])),
 });
 
-export const zSseItemOfAddRatingRequest = z.object({
-  data: z.optional(zAddRatingRequest),
+export type AddRatingRequestModel = z.infer<typeof addRatingRequestSchema>;
+
+export const sseItemOfAddRatingRequestSchema = z.object({
+  data: z.optional(addRatingRequestSchema),
   eventType: z.optional(z.union([z.null(), z.string()])),
   eventId: z.optional(z.union([z.null(), z.string()])),
   reconnectionInterval: z.optional(
@@ -49,76 +61,4 @@ export const zSseItemOfAddRatingRequest = z.object({
   ),
 });
 
-export const getApiMoviesSchema = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-export type GetApiMoviesRequestModel = z.infer<typeof getApiMoviesSchema>;
-
-/**
- * OK
- */
-export const getApiMoviesResponse = z.array(zMovieDetailsResponse);
-
-export type GetApiMoviesResponseModel = z.infer<typeof getApiMoviesResponse>;
-
-export const postApiMoviesSchema = z.object({
-  body: zMovieCreateRequest,
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-export type PostApiMoviesRequestModel = z.infer<typeof postApiMoviesSchema>;
-
-/**
- * Created
- */
-export const postApiMoviesResponse = zMovieDetailsResponse;
-
-export type PostApiMoviesResponseModel = z.infer<typeof postApiMoviesResponse>;
-
-export const getApiMoviesByIdSchema = z.object({
-  body: z.optional(z.never()),
-  path: z.object({
-    id: z.uuid(),
-  }),
-  query: z.optional(z.never()),
-});
-
-export type GetApiMoviesByIdRequestModel = z.infer<typeof getApiMoviesByIdSchema>;
-
-/**
- * OK
- */
-export const getApiMoviesByIdResponse = zMovieDetailsResponse;
-
-export type GetApiMoviesByIdResponseModel = z.infer<typeof getApiMoviesByIdResponse>;
-
-export const postApiMoviesRatingsSchema = z.object({
-  body: zAddRatingRequest,
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-export type PostApiMoviesRatingsRequestModel = z.infer<typeof postApiMoviesRatingsSchema>;
-
-export const getApiMoviesRatingsChannelSchema = z.object({
-  body: z.optional(z.never()),
-  path: z.optional(z.never()),
-  query: z.optional(z.never()),
-});
-
-export type GetApiMoviesRatingsChannelRequestModel = z.infer<
-  typeof getApiMoviesRatingsChannelSchema
->;
-
-/**
- * OK
- */
-export const getApiMoviesRatingsChannelResponse = zSseItemOfAddRatingRequest;
-
-export type GetApiMoviesRatingsChannelResponseModel = z.infer<
-  typeof getApiMoviesRatingsChannelResponse
->;
+export type SseItemOfAddRatingRequestModel = z.infer<typeof sseItemOfAddRatingRequestSchema>;

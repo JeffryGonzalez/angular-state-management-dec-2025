@@ -13,22 +13,35 @@ export default defineConfig({
     {
       name: 'zod',
       exportFromIndex: true,
-      requests: {
+      // types: {
+      //   infer: true,
+      // },
+      definitions: {
         name: '{{name}}Schema',
         types: {
           infer(name) {
-            return `${name}RequestModel`;
+            return `${name}Model`;
           },
         },
       },
-      responses: {
-        name: '{{name}}Response',
-        types: {
-          infer(name) {
-            return `${name}ResponseModel`;
-          },
-        },
-      },
+      requests: false,
+      responses: false,
+      // requests: {
+      //   name: '{{name}}Schema',
+      //   types: {
+      //     infer(name) {
+      //       return `${name}RequestModel`;
+      //     },
+      //   },
+      // },
+      // responses: {
+      //   name: '{{name}}Response',
+      //   types: {
+      //     infer(name) {
+      //       return `${name}ResponseModel`;
+      //     },
+      //   },
+      // },
     },
   ],
 });

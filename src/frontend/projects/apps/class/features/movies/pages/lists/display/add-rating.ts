@@ -5,11 +5,13 @@ import { CloseAllDialogsDirective } from '@ngneat/dialog';
 import { MovieRatings } from '../../../types';
 import { RatingInput } from './rating-input';
 
-import {} from '@class-common/movies/types/api';
-import {} from '@class-common/movies/types/api';
+import {
+  PostApiMoviesRatingsRequestModel,
+  postApiMoviesRatingsSchema,
+} from '@class-common/movies/types/api';
 
-const createRatingSchema = schema<AddRatingRequestZodType>((path) => {
-  validateStandardSchema(path, zAddRatingRequest);
+const createRatingSchema = schema<PostApiMoviesRatingsRequestModel>((path) => {
+  validateStandardSchema(path, postApiMoviesRatingsSchema);
 });
 export type MovieRatingRequest = {
   movie: {
@@ -99,13 +101,9 @@ export class AddRating {
   }
   submitted = signal(false);
 
-  #default = signal<MovieRatingRequest>({
-    movie: { id: '', version: 0 },
-    rating: 1,
-    comment: '',
-  });
+  #default = signal<PostApiMoviesRatingsRequestModel>({});
 
   // validation can be a function like I'm doing here, with built in or custom validators, sync or async,
   // or they can be any Standard Schema validations.
-  form = form(this.#default, createRatingSchema);
+  form = form<PostApiMoviesRatingsRequestModel>(this.#default, createRatingSchema);
 }
