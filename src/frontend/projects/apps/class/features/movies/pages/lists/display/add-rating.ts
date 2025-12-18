@@ -1,26 +1,16 @@
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
-
-import { AddRatingRequest } from '../../../../../../../common/api-clients/movies';
-import { zAddRatingRequest } from '../../../../../../../common/api-clients/movies/zod.gen';
-
-const createRatingSchema = schema<AddRatingRequest>((path) => {
-  validateStandardSchema(path, zAddRatingRequest);
-});
-import {
-  applyWhen,
-  Field,
-  form,
-  maxLength,
-  min,
-  minLength,
-  required,
-  schema,
-  validateStandardSchema,
-} from '@angular/forms/signals';
+import { Field, form, schema, validateStandardSchema } from '@angular/forms/signals';
 import { CloseAllDialogsDirective } from '@ngneat/dialog';
 import { MovieRatings } from '../../../types';
 import { RatingInput } from './rating-input';
+
+import {} from '@class-common/movies/types/api';
+import {} from '@class-common/movies/types/api';
+
+const createRatingSchema = schema<AddRatingRequestZodType>((path) => {
+  validateStandardSchema(path, zAddRatingRequest);
+});
 export type MovieRatingRequest = {
   movie: {
     id: string;

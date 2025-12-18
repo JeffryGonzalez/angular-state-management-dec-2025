@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { MovieDetailsResponse } from '@class-common/movies/types/api';
 import { tap } from 'rxjs';
-import { MovieDetailsResponse } from '../../../../../common/api-clients/movies';
 
 export class MovieService {
   #client = inject(HttpClient);

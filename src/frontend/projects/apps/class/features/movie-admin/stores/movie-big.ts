@@ -12,7 +12,7 @@ import {
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { computed, inject, isDevMode } from '@angular/core';
 import { removeEntity, setEntities, updateEntity, withEntities } from '@ngrx/signals/entities';
-import { MovieDetailsResponse } from '../../../../../common/api-clients/movies';
+import { MovieDetailsResponse } from '@class-common/movies/types/api';
 
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { mapResponse } from '@ngrx/operators';

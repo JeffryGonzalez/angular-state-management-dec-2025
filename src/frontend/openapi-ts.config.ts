@@ -6,23 +6,29 @@ export default defineConfig({
     {
       format: 'prettier',
       lint: 'eslint',
-      path: './projects/common/api-clients/movies',
+      path: './projects/apps/class/common/movies/types/api',
     },
   ],
   plugins: [
-    'zod',
     {
-      name: '@hey-api/client-angular',
-      throwOnError: true,
-    },
-    '@hey-api/schemas',
-    {
-      asClass: true,
-      name: '@hey-api/sdk',
-    },
-    {
-      name: '@hey-api/sdk',
-      validators: true,
+      name: 'zod',
+      exportFromIndex: true,
+      requests: {
+        name: '{{name}}Schema',
+        types: {
+          infer(name) {
+            return `${name}RequestModel`;
+          },
+        },
+      },
+      responses: {
+        name: '{{name}}Response',
+        types: {
+          infer(name) {
+            return `${name}ResponseModel`;
+          },
+        },
+      },
     },
   ],
 });
